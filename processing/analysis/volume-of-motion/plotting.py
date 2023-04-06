@@ -110,9 +110,6 @@ def areaOfMotionAnalysis(filepath, userIsResident, armIsLeft):
     # combine the arrays into a 3d numpy array
     all_coords = np.vstack((x, y, z)).T
 
-    # calculate distances between all consecutive points
-    distances = np.sqrt(np.sum(np.diff(all_coords, axis=0)**2, axis=1))
-
     # add a text annotation with the total length
     if userIsResident:
         ax.text2D(0.5, 0.00, f'Your Performance', ha='center', transform=ax.transAxes, fontsize=10)
@@ -126,26 +123,33 @@ def areaOfMotionAnalysis(filepath, userIsResident, armIsLeft):
     average_x = sum(x) / len(x)
     average_y = sum(y) / len(y)
     average_z = sum(z) / len(z)
-
+    
     # calculate distances from centroid for each coordinate
     distances = [(math.sqrt((c[0]-average_x)**2 + (c[1]-average_y)**2 + (c[2]-average_z)**2), c) for c in zip(x,y,z)]
 
     # sort distances in ascending order
     distances.sort()
-
+    
     # determine the number of coordinates to keep (top 80%)
     num_to_keep = int(0.8 * len(distances))
 
     # extract the top 80% of coordinates
     top_coords = np.array([c[1] for c in distances[:num_to_keep]])
-        
-    x_top, y_top, z_top = ellipsoidGen(top_coords)
+    
+    # create an index array indicating the positions of the matching elements in all_coords
+    idx = np.where(np.isin(all_coords, top_coords).all(axis=1))[0]
+
+    # extract the corresponding elements of top_coords in the order they appear in all_coords
+    top_coords_ordered = top_coords[np.argsort(idx)]
+            
+    x_top, y_top, z_top = ellipsoidGen(top_coords_ordered)
     x_all, y_all, z_all = ellipsoidGen(all_coords)
     
     # Add the ellipsoid wireframe to the plot
     ax.plot_wireframe(x_all, y_all, z_all, color='black', alpha=0.05)
     ax.plot_surface(x_all, y_all, z_all, color='cyan', alpha=0.05, shade=True, rstride=1, cstride=1)
 
+    # ISSUE: generated ellipsoid for 80% coords is too big 
     ax.plot_wireframe(x_top, y_top, z_top, color='red', alpha=0.2, label='80% Coverage')
 
     # # Set the plot labels
