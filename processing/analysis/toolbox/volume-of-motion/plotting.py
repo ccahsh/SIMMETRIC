@@ -96,6 +96,42 @@ def mergeTrajectories(residentFilePath, surgeonFilePath, armIsLeft):
 
     # Add a legend
     ax.legend(loc='upper right', fontsize=8)
+    
+def extract_top_eighty(x,y,z):
+    # centroid for ellipsoid
+    average_x = sum(x) / len(x)
+    average_y = sum(y) / len(y)
+    average_z = sum(z) / len(z)
+    # calculate distances from centroid for each coordinate
+    distances = [(math.sqrt((c[0]-average_x)**2 + (c[1]-average_y)**2 + (c[2]-average_z)**2), c) for c in zip(x,y,z)]
+    # sort distances in ascending order
+    distances.sort()
+    # determine the number of coordinates to keep (top 80%)
+    num_to_keep = int(0.8 * len(distances))
+    # extract the top 80% of coordinates
+    top_coords = np.array([c[1] for c in distances[:num_to_keep]])
+    return top_coords
+    
+def extract_top_eighty(x,y,z):
+    
+    # centroid for ellipsoid
+    average_x = sum(x) / len(x)
+    average_y = sum(y) / len(y)
+    average_z = sum(z) / len(z)
+    
+    # calculate distances from centroid for each coordinate
+    distances = [(math.sqrt((c[0]-average_x)**2 + (c[1]-average_y)**2 + (c[2]-average_z)**2), c) for c in zip(x,y,z)]
+
+    # sort distances in ascending order
+    distances.sort()
+    
+    # determine the number of coordinates to keep (top 80%)
+    num_to_keep = int(0.8 * len(distances))
+
+    # extract the top 80% of coordinates
+    top_coords = np.array([c[1] for c in distances[:num_to_keep]])
+    
+    return top_coords
 
 def areaOfMotionAnalysis(filepath, userIsResident, armIsLeft):
     
@@ -119,30 +155,16 @@ def areaOfMotionAnalysis(filepath, userIsResident, armIsLeft):
     # plot the trajectory
     ax.plot(x, y, z, color='blue', label='Trajectory', linewidth=0.5)
 
-    # centroid for ellipsoid
-    average_x = sum(x) / len(x)
-    average_y = sum(y) / len(y)
-    average_z = sum(z) / len(z)
-    
-    # calculate distances from centroid for each coordinate
-    distances = [(math.sqrt((c[0]-average_x)**2 + (c[1]-average_y)**2 + (c[2]-average_z)**2), c) for c in zip(x,y,z)]
-
-    # sort distances in ascending order
-    distances.sort()
-    
-    # determine the number of coordinates to keep (top 80%)
-    num_to_keep = int(0.8 * len(distances))
-
     # extract the top 80% of coordinates
-    top_coords = np.array([c[1] for c in distances[:num_to_keep]])
+    top_coords = extract_top_eighty(x, y, z)
     
-    # create an index array indicating the positions of the matching elements in all_coords
-    idx = np.where(np.isin(all_coords, top_coords).all(axis=1))[0]
+    # # create an index array indicating the positions of the matching elements in all_coords
+    # idx = np.where(np.isin(all_coords, top_coords).all(axis=1))[0]
 
-    # extract the corresponding elements of top_coords in the order they appear in all_coords
-    top_coords_ordered = top_coords[np.argsort(idx)]
+    # # extract the corresponding elements of top_coords in the order they appear in all_coords
+    # top_coords_ordered = top_coords[np.argsort(idx)]
             
-    x_top, y_top, z_top = ellipsoidGen(top_coords_ordered)
+    x_top, y_top, z_top = ellipsoidGen(top_coords)
     x_all, y_all, z_all = ellipsoidGen(all_coords)
     
     # Add the ellipsoid wireframe to the plot

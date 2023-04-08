@@ -56,7 +56,7 @@ if __name__ == '__main__':
 
     from preprocess_jigsaw import get_simmetric_path, no_simmetric_abort
     from ellipsoid_fit_modified import ellipsoid_fit
-    from plotting import ellipsoidGen, extractCoordinates, mergeTrajectories, areaOfMotionAnalysis
+    from plotting import ellipsoidGen, extractCoordinates, mergeTrajectories, areaOfMotionAnalysis, extract_top_eighty
 
     def ellipsoidGenRadiiOnly(coords):
         # compute the convex hull of the points
@@ -110,7 +110,7 @@ if __name__ == '__main__':
         performance_info = [] 
         
         for k in subfolder: # k = self-claimed expertise level
-            print(k)
+
             csv_files = []
             for root, dirs, files in os.walk(k): # within subfolder
                 for file in files:
@@ -118,7 +118,6 @@ if __name__ == '__main__':
                         full_path = os.path.join(root, file)
                         if os.path.isfile(full_path) and os.path.splitext(full_path)[1].lower() == '.csv':
                             csv_files.append(full_path) # valid, regular csv file paths
-                            print(full_path)
             
             for m in csv_files:
                 split_info = os.path.splitext(m)[0].split('_')[1:]
@@ -212,6 +211,14 @@ if __name__ == '__main__':
                         volMotion_axis_SRT = ellipsoidGenRadiiOnly(np.array(SRT)) 
                         volMotion_SRT = compute_ellipsoid_volume(volMotion_axis_SRT)
                         
+                        # 80% Volume of Motion
+                        eighty_percent_points_SLT = extract_top_eighty(SLT_x, SLT_y, SLT_z) # 80% closest points to centroid
+                        volMotion_eighty_axis_SLT = ellipsoidGenRadiiOnly(eighty_percent_points_SLT) 
+                        volMotion_eighty_SLT = compute_ellipsoid_volume(volMotion_eighty_axis_SLT)
+                        eighty_percent_points_SRT = extract_top_eighty(SRT_x, SRT_y, SRT_z) 
+                        volMotion_eighty_axis_SRT = ellipsoidGenRadiiOnly(eighty_percent_points_SRT) 
+                        volMotion_eighty_SRT = compute_ellipsoid_volume(volMotion_eighty_axis_SRT)
+                        
                         # WRITE RESULTS 
                         row_left = {
                             'User': p['user'],
@@ -220,7 +227,7 @@ if __name__ == '__main__':
                             'Self-Claimed Level': p['selfscore'],
                             'GRS': p['objscore'],
                             'Volume of Motion': volMotion_SLT,
-                            '80% Volume of Motion': volMotion_SLT,
+                            '80% Volume of Motion': volMotion_eighty_SLT,
                             'Time to Completion': timeToCompletion,
                             'Economy of Motion': econMotion_SLT
                         }
@@ -233,7 +240,7 @@ if __name__ == '__main__':
                             'Self-Claimed Level': p['selfscore'],
                             'GRS': p['objscore'],
                             'Volume of Motion': volMotion_SRT,
-                            '80% Volume of Motion': volMotion_SRT,
+                            '80% Volume of Motion': volMotion_eighty_SRT,
                             'Time to Completion': timeToCompletion,
                             'Economy of Motion': econMotion_SRT
                         }
