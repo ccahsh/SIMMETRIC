@@ -123,7 +123,14 @@ if __name__ == '__main__':
                 split_info = os.path.splitext(m)[0].split('_')[1:]
                 if len(split_info) < 3: # ignore csv file that doesn't have a specified gesture
                     continue
-                user_trial, gesture, objscore = split_info[-3:] # e.g. ('E003', 'G15', '22'), works with all task types (e.g. Knot_Tying vs. Suturing)
+
+                if len(split_info) == 3:
+                    user_trial, gesture, objscore = split_info[-3:]
+                    objsub = [None for i in range(6)]
+                else:
+                    user_trial, gesture, objscore = split_info[-9:-6] # e.g. ('E003', 'G15', '22'), works with all task types (e.g. Knot_Tying vs. Suturing)
+                    objsub = split_info[-6:]
+
                 split = re.match(r'([A-Za-z]+)(\d+)', user_trial)
                 if not split: # ignore csv files that do not have a concatenated string of user ID + trial #
                     continue
@@ -136,6 +143,7 @@ if __name__ == '__main__':
                     'trial': trial,
                     'selfscore': k,
                     'objscore': objscore,
+                    'objsub': objsub,
                     'path': m
                 }
                 performance_info.append(info)
@@ -151,6 +159,12 @@ if __name__ == '__main__':
                 'Gesture Frequency', 
                 'Self-Claimed Level', 
                 'GRS', 
+                'Respect for Tissue',
+                'Suture/Needle Handling',
+                'Time and Motion',
+                'Flow of Operation',
+                'Overall Performance',
+                'Quality of Final Product',
                 'Volume of Motion',
                 '80% Volume of Motion', 
                 'Time to Completion', 
@@ -226,6 +240,12 @@ if __name__ == '__main__':
                             'Gesture Frequency': gesture_freq,
                             'Self-Claimed Level': p['selfscore'],
                             'GRS': p['objscore'],
+                            'Respect for Tissue': p['objsub'][0],
+                            'Suture/Needle Handling':p['objsub'][1],
+                            'Time and Motion':p['objsub'][2],
+                            'Flow of Operation':p['objsub'][3],
+                            'Overall Performance':p['objsub'][4],
+                            'Quality of Final Product':p['objsub'][5],
                             'Volume of Motion': volMotion_SLT,
                             '80% Volume of Motion': volMotion_eighty_SLT,
                             'Time to Completion': timeToCompletion,
@@ -239,6 +259,12 @@ if __name__ == '__main__':
                             'Gesture Frequency': gesture_freq,
                             'Self-Claimed Level': p['selfscore'],
                             'GRS': p['objscore'],
+                            'Respect for Tissue': p['objsub'][0],
+                            'Suture/Needle Handling':p['objsub'][1],
+                            'Time and Motion':p['objsub'][2],
+                            'Flow of Operation':p['objsub'][3],
+                            'Overall Performance':p['objsub'][4],
+                            'Quality of Final Product':p['objsub'][5],
                             'Volume of Motion': volMotion_SRT,
                             '80% Volume of Motion': volMotion_eighty_SRT,
                             'Time to Completion': timeToCompletion,
@@ -251,7 +277,7 @@ if __name__ == '__main__':
             dfrightcsvname = i + '_' + 'Compilation' + '_' + n + '_' + 'Right' + '.csv'
             dfleftexportpath = os.path.join(outputtaskpwd, n, dfleftcsvname) # e.g. (.../processed-datasets/OUTPUT-GESTURES/Knot_Tying_, G13, Knot_Tying_Compilation_G13_Left.csv)
             dfrightexportpath = os.path.join(outputtaskpwd, n, dfrightcsvname)
-            
+    
             df_left.to_csv(dfleftexportpath, index=True)
             df_right.to_csv(dfrightexportpath, index=True)
             
