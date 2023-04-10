@@ -36,6 +36,12 @@ def extract_letter_number(strings, ranking):
     matches = [re.search(pattern, s) for s in strings]
     return [(m.group(1), int(m.group(2)), ranking[i]) if m else None for i, m in enumerate(matches)]
 
+def extract_letter_numbers(strings, ranking):
+    pattern = r'([A-Z])(\d+)$'
+    matches = [re.search(pattern, s) for s in strings]
+
+    return [(m.group(1), int(m.group(2)), tuple(ranking.iloc[i])) if m else None for i, m in enumerate(matches)]
+
 def extract_info(s):
     match = re.match(r"(\w+)_([A-Z])(\d+)\.txt", s)
     if match:
@@ -122,8 +128,8 @@ if __name__ == '__main__':
             override_make_folder(skillsubfolder)
             
         metaset = extract_letter_number(metadf['filename'], metadf['skill_proclaimed']) # elements: e.g. ('B', 2, 'N')
-        metaset_GRS = extract_letter_number(metadf['filename'], metadf['skill_obj']) # elements: e.g. ('B', 2, 9)
-        # print(metaset)
+
+        metaset_GRS = extract_letter_numbers(metadf['filename'], metadf.loc[:, "skill_obj":"eval6"]) # elements: e.g. ('B', 2, (9, 1, 2, 3, 4, 5))
         
         for i in metaset:
             userpwd = os.path.join(outputtaskpwd, i[2], i[0], str(i[1])) # e.g. (outputtaskpwd, 'N', 'B', str(1))
@@ -158,6 +164,12 @@ if __name__ == '__main__':
             individual_trial = extract_info(i) # e.g. ('D', 4)
             expertise = find_element(metaset, individual_trial)
             GRS = str(find_element(metaset_GRS, individual_trial)) # str(num) or 'None'
+
+            # remove extra chars from tuple
+            for c in [" ", "(", ")"]:
+                GRS = GRS.replace(c, "")
+
+            GRS = GRS.replace(",", "_")
             
             # process files
             kinematicscolumns = [
