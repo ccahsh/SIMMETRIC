@@ -22,14 +22,7 @@ def get_simmetric_path(path):
         return match.string[0:match.end()]
     else:
         raise Exception("SIMMETRIC folder cannot be found from the file path. Please fix and try again.")
-    # while True:
-    #     dir_path, dir_name = os.path.split(path)
-    #     if dir_name == "SIMMETRIC":
-    #         return path
-    #     elif dir_name == "":
-    #         return None
-    #     else:
-    #         path = dir_path
+
 
 
 if __name__ == "__main__":
@@ -40,15 +33,26 @@ if __name__ == "__main__":
     check_path(simmetric_path) # abort if SIMMETRIC not found
 
 
-    gesture_path = os.path.join(simmetric_path, 'processed-datasets', "OUTPUT-GESTURES", "Knot_Tying", "G13", )
+    gesture_path = os.path.join(simmetric_path, 'processed-datasets', "OUTPUT-GESTURES", "Knot_Tying")
     check_path(gesture_path) # abort if trial folder d.n.e
 
     os.chdir(gesture_path)
 
-    for i, filename in enumerate(next(os.walk("."))[2]):
-        hand = "Left" if i==0 else "Right"
+    df_left = pd.DataFrame()
+    df_right = pd.DataFrame()
 
-        df = pd.read_csv(filename)
+    for folder in next(os.walk("."))[1]:
+        for i, file in enumerate(next(os.walk(folder))[2]):
+
+            df = pd.read_csv(os.path.join(folder, file))
+
+            if i == 0:
+                df_left = pd.concat([df_left, df], ignore_index=True)
+            else:
+                df_right = pd.concat([df_left, df], ignore_index=True)
+
+    for i,df in enumerate((df_left, df_right)):
+        hand = "Left" if i==0 else "Right"
 
         for y_name in df.loc[:, "Volume of Motion" : "Economy of Motion"]:
             y = df.loc[:, y_name]
