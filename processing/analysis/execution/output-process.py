@@ -600,7 +600,7 @@ if __name__ == '__main__':
     with open('summary-gestures.txt', 'w') as f:
         for result in gestures_corr_results:
             result_str = map(str, result)
-            line = ','.join(result_str) + '\n'
+            line = ' '.join(result_str) + '\n'
             f.write(line)
     
     os.chdir(outputindividualtaskpwd)
@@ -612,7 +612,7 @@ if __name__ == '__main__':
     with open('summary-individual.txt', 'w') as f:
         for result in individual_corr_results:
             result_str = map(str, result)
-            line = ','.join(result_str) + '\n'
+            line = ' '.join(result_str) + '\n'
             f.write(line)
 
     overall_corr_results = gestures_corr_results + individual_corr_results
@@ -625,5 +625,5 @@ if __name__ == '__main__':
     with open('summary-overall.txt', 'w') as f:
         for result in overall_result_sorted:
             result_str = map(str, result)
-            line = ' ,'.join(result_str) + '\n'
+            line = ' '.join(result_str) + '\n'
             f.write(line)
