@@ -113,34 +113,28 @@ def ellipsoid_fit(X):
     y = X[:, 1]
     z = X[:, 2]
     D = np.array([x * x + y * y - 2 * z * z,
-                 x * x + z * z - 2 * y * y,
-                 2 * x * y,
-                 2 * x * z,
-                 2 * y * z,
-                 2 * x,
-                 2 * y,
-                 2 * z,
-                 1 - 0 * x])
-    if np.linalg.det(D.dot(D.T)) == 0:
-        D = np.array([x * x + y * y - 2 * z * z + 1e-6,
-                x * x + z * z - 2 * y * y + 1e-6,
-                2 * x * y,
-                2 * x * z,
-                2 * y * z,
-                2 * x,
-                2 * y,
-                2 * z,
-                1 - 0 * x + 1e-6])
+                    x * x + z * z - 2 * y * y,
+                    2 * x * y,
+                    2 * x * z,
+                    2 * y * z,
+                    2 * x,
+                    2 * y,
+                    2 * z,
+                    1 - 0 * x])
     d2 = np.array(x * x + y * y + z * z).T # rhs for LLSQ
-    u = np.linalg.solve(D.dot(D.T), D.dot(d2))
+    DDT = D.dot(D.T)
+    while np.linalg.det(DDT) == 0:
+        alpha = 1e-6
+        DDT = DDT + alpha * np.eye(DDT.shape[0]) # Tikhonov regularization
+    u = np.linalg.solve(DDT, D.dot(d2))
     a = np.array([u[0] + 1 * u[1] - 1])
     b = np.array([u[0] - 2 * u[1] - 1])
     c = np.array([u[1] - 2 * u[0] - 1])
     v = np.concatenate([a, b, c, u[2:]], axis=0).flatten()
     A = np.array([[v[0], v[3], v[4], v[6]],
-                  [v[3], v[1], v[5], v[7]],
-                  [v[4], v[5], v[2], v[8]],
-                  [v[6], v[7], v[8], v[9]]])
+                    [v[3], v[1], v[5], v[7]],
+                    [v[4], v[5], v[2], v[8]],
+                    [v[6], v[7], v[8], v[9]]])
 
     center = np.linalg.solve(- A[:3, :3], v[6:9])
 
@@ -156,4 +150,3 @@ def ellipsoid_fit(X):
     radii *= np.sign(evals)
 
     return center, evecs, radii, v
-
