@@ -107,11 +107,17 @@ if __name__ == '__main__':
 
     outputpwd = os.path.join(output_dir, 'OUTPUT')
     override_make_folder(outputpwd)
+    
+    outputindividualpwd = os.path.join(output_dir, 'OUTPUT-INDIVIDUAL')
+    override_make_folder(outputindividualpwd)
 
-    for i in folder:
+    for i in folder: # later fix the i, j, k... var names
         # new folder
         outputtaskpwd = os.path.join(output_dir, 'OUTPUT', i)
         override_make_folder(outputtaskpwd)
+        outputindividualtaskpwd = os.path.join(output_dir, 'OUTPUT-INDIVIDUAL', i)
+        override_make_folder(outputindividualtaskpwd)
+        
         path = os.path.join(os.getcwd(), i, i) # double folder
         os.chdir(path) 
         
@@ -170,6 +176,8 @@ if __name__ == '__main__':
                 GRS = GRS.replace(c, "")
 
             GRS = GRS.replace(",", "_")
+            GRS += "_"
+            GRS += str(expertise)
             
             # process files
             kinematicscolumns = [
@@ -215,6 +223,16 @@ if __name__ == '__main__':
             ]
 
             highlightsdf = kinematicsdf[highlights]
+            highlightindividualsdf = highlightsdf.copy() # separate
+            
+            # OUTPUT 1 (newly added, so code is clunky): break down by individual
+
+            individualfilepath = os.path.join(outputindividualtaskpwd, i.replace('.txt', '_' + GRS + '.csv'))
+            highlightindividualsdf.index += 1 # same frame # as specified in transcriptions .txt files
+            highlightindividualsdf.index.name = 'frame'
+            highlightindividualsdf.to_csv(individualfilepath, index=True)
+        
+            # OUTPUT 2: break down by gestures
             
             # split copies of df based on gestures
             transcolumns = ['start', 'end', 'type']
@@ -253,16 +271,40 @@ if __name__ == '__main__':
         # end
         os.chdir(pwd)
         
+    # move and reorganize
+    
+    gestures_folder = os.path.join(outputpwd, 'Gestures')
+    individual_folder = os.path.join(outputpwd, 'Individual')
+    
+    items_gestures = [i for i in os.listdir(outputpwd)]
+    items_individual = [i for i in os.listdir(outputindividualpwd)]
+    
+    override_make_folder(gestures_folder)
+    override_make_folder(individual_folder)
+    
+    for item in items_gestures:
+        item_path = os.path.join(outputpwd, item)
+        new_item_path = os.path.join(gestures_folder, item)
+        shutil.move(item_path, new_item_path)
+        
+    for item in items_individual:
+        item_path = os.path.join(outputindividualpwd, item)
+        new_item_path = os.path.join(individual_folder, item)
+        shutil.move(item_path, new_item_path)
+    
+    if os.path.exists(outputindividualpwd):
+        shutil.rmtree(outputindividualpwd)
+        
     # show error messages (in order of priority)
 
     print("\n\n")
 
-    print("***The following file(s) are in kinematics/AllGestures but not in transcriptions folder. They are also not documented in meta_file_~.txt AT ALL. Folders corresponding to these file(s) cannot be found nor can be made in the OUPUT folder. Please check and update the database: \n")
+    print("***The following file(s) are in kinematics/AllGestures but not in transcriptions folder. They are also not documented in meta_file_~.txt AT ALL. Folders corresponding to these file(s) cannot be found nor can be made in the OUPUT/Gestures folder. Please check and update the database: \n")
     for i in totalError:
         print(i)
     print("\n\n")
 
-    print("The following file(s) are in kinematics/AllGestures but not in transcriptions folder nor fully documented in meta_file_~.txt. Regardless, folders corresponding to these files were automatically created in OUTPUT folder. Please check and update the database: \n")
+    print("The following file(s) are in kinematics/AllGestures but not in transcriptions folder nor fully documented in meta_file_~.txt. Regardless, folders corresponding to these files were automatically created in OUTPUT/Gestures folder. Please check and update the database: \n")
     for i in partialError:
         print(i)
     print("\n\n")
