@@ -106,10 +106,25 @@ def extract_top_eighty(x,y,z):
     distances = [(math.sqrt((c[0]-average_x)**2 + (c[1]-average_y)**2 + (c[2]-average_z)**2), c) for c in zip(x,y,z)]
     # sort distances in ascending order
     distances.sort()
+    # get center point
+    center_point = distances[0][1]
+    # all zipped points
+    merged_list = list(zip(x,y,z))
     # determine the number of coordinates to keep (top 80%)
     num_to_keep = int(0.8 * len(distances))
     # extract the top 80% of coordinates
-    top_coords = np.array([c[1] for c in distances[:num_to_keep]])
+    middle_index = merged_list.index(center_point)
+    if middle_index < num_to_keep/2:
+        top_coords = merged_list[:num_to_keep]
+    elif (len(merged_list) - middle_index) < num_to_keep/2:
+        start_index = len(merged_list) - num_to_keep
+        top_coords = merged_list[start_index:]
+    else:
+        start_index = middle_index - int(num_to_keep/2)
+        last_index = middle_index + int(num_to_keep/2)
+        top_coords = merged_list[start_index:last_index]
+
+    # top_coords = np.array([c[1] for c in distances[:num_to_keep]])
     return top_coords
     
 def extract_top_eighty(x,y,z):
@@ -193,8 +208,8 @@ if __name__ == '__main__':
     fig, ((ax1, ax2, ax3), (ax4, ax5, ax6)) = plt.subplots(nrows=2, ncols=3, figsize=(15, 8), subplot_kw={'projection': '3d'})
 
     # get resident / surgeon's performances from CSV
-    residentRecord = "Knot_Tying_D001_G13.csv"
-    surgeonRecord = "Knot_Tying_B001_G13.csv"
+    residentRecord = "Knot_Tying_D001_G13_14_3_1_2_3_2_3.csv"
+    surgeonRecord = "Knot_Tying_B001_G13_13_2_2_2_2_2_3.csv"
 
     #LEFT
     # Area of Motion Analysis

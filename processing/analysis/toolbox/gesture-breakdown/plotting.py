@@ -1,5 +1,5 @@
 import os, sys
-from numpy import greater
+from numpy import greater, pad
 import pandas as pd
 from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
@@ -69,8 +69,8 @@ if __name__ == "__main__":
         ax2.set_zlabel('$Z$')
 
 
-    fig.tight_layout()
-    
+    fig.tight_layout(pad=5)
+
     fig.suptitle('Gesture Breakdown: User ' + user + ", Trial " + trial, fontweight="bold")
 
     fig.legend(gestures)
