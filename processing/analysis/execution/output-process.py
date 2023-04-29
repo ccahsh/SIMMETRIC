@@ -79,18 +79,22 @@ if __name__ == '__main__':
     # change path to .../SIMMETRIC/preprocessed-datasets
     os.chdir(preprocessed_datasets_path)
 
-    folder = [f for f in next(os.walk('OUTPUT'))[1] if not f.startswith('.')] # not .DS_Store
+    gestures_folder = [f for f in next(os.walk('OUTPUT/Gestures'))[1] if not f.startswith('.')] # not .DS_Store
+    individual_folder = [f for f in next(os.walk('OUTPUT/Individual'))[1] if not f.startswith('.')] # not .DS_Store
 
     pwd = os.getcwd() # .../SIMMETRIC/preprocessed-datasets
 
     outputgesturespwd = os.path.join(pwd, 'OUTPUT-GESTURES')
     override_make_folder(outputgesturespwd)
 
-    for i in folder:
+    # OUTPUT 1: OUTPUT-GESTURES
+    
+    for i in gestures_folder:
         # new folder
         outputtaskpwd = os.path.join(pwd, 'OUTPUT-GESTURES', i)
         override_make_folder(outputtaskpwd)
-        path = os.path.join(pwd, 'OUTPUT', i) 
+        
+        path = os.path.join(pwd, 'OUTPUT/Gestures', i) 
         os.chdir(path) 
         
         subfolder = [f for f in next(os.walk('.'))[1] if not f.startswith('.')] # {E, I, N} subfolders
@@ -120,16 +124,20 @@ if __name__ == '__main__':
                             csv_files.append(full_path) # valid, regular csv file paths
             
             for m in csv_files:
+                csv_name = os.path.basename(m)
+                if 'None' in csv_name:
+                    continue # ignore CSV files w/o evaluation metrics
                 split_info = os.path.splitext(m)[0].split('_')[1:]
-                if len(split_info) < 3: # ignore csv file that doesn't have a specified gesture
+                print(m)
+                print(split_info)
+                if (len(split_info) < 3): # ignore csv file that doesn't have a specified gesture
                     continue
-
                 if len(split_info) == 3:
                     user_trial, gesture, objscore = split_info[-3:]
                     objsub = [None for i in range(6)]
                 else:
-                    user_trial, gesture, objscore = split_info[-9:-6] # e.g. ('E003', 'G15', '22'), works with all task types (e.g. Knot_Tying vs. Suturing)
-                    objsub = split_info[-6:]
+                    user_trial, gesture, objscore = split_info[-10:-7] # e.g. ('E003', 'G15', '22'), works with all task types (e.g. Knot_Tying vs. Suturing)
+                    objsub = split_info[-7:-1] # ignore last letter (self-proclaimed expertise level); that will be only used for the OUTPUT-INDIVIDUAL folder
 
                 split = re.match(r'([A-Za-z]+)(\d+)', user_trial)
                 if not split: # ignore csv files that do not have a concatenated string of user ID + trial #
@@ -281,3 +289,160 @@ if __name__ == '__main__':
             df_left.to_csv(dfleftexportpath, index=True)
             df_right.to_csv(dfrightexportpath, index=True)
             
+    # OUTPUT 2: OUTPUT-INDIVIDUAL
+    
+    outputindividualtaskpwd = os.path.join(pwd, 'OUTPUT-INDIVIDUAL')
+    override_make_folder(outputindividualtaskpwd)
+    
+    for i in individual_folder: # task type
+        # new folder
+        outputindividualtaskpwd = os.path.join(pwd, 'OUTPUT-INDIVIDUAL', i)
+        override_make_folder(outputindividualtaskpwd)
+        
+        path = os.path.join(pwd, 'OUTPUT/Individual', i) 
+        os.chdir(path) 
+        
+        csv_files = []
+        for root, dirs, files in os.walk('.'):
+            for file in files:
+                if file.endswith('.csv') and not file.startswith('~') and not file.startswith('.'):
+                    full_path = os.path.join(root, file)
+                    if os.path.isfile(full_path) and os.path.splitext(full_path)[1].lower() == '.csv':
+                        csv_name = os.path.basename(full_path)
+                        if 'None' in csv_name:
+                            continue # ignore CSV files w/o evaluation metrics
+                        csv_files.append(full_path) # valid, regular csv file paths 
+                
+        # new csv file
+        df_left = pd.DataFrame(columns=[
+            'User', 
+            'Trial', 
+            'Self-Claimed Level', 
+            'GRS', 
+            'Respect for Tissue',
+            'Suture/Needle Handling',
+            'Time and Motion',
+            'Flow of Operation',
+            'Overall Performance',
+            'Quality of Final Product',
+            'Volume of Motion',
+            '80% Volume of Motion', 
+            'Time to Completion', 
+            'Economy of Motion'
+        ])
+        # create df_right with same columns as df_left
+        df_right = pd.DataFrame(columns=df_left.columns)
+            
+        for m in csv_files:
+            split_info = os.path.splitext(m)[0].split('_')[1:]
+            print(m)
+            print(split_info)
+            user_trial, objscore = split_info[-9:-7] # e.g. ('C002', '22'), works with all task types (e.g. Knot_Tying vs. Suturing)
+            objsub = split_info[-7:-1]
+            selfscore = split_info[-1]
+            split = re.match(r'([A-Za-z]+)(\d+)', user_trial)
+            if not split: # ignore csv files that do not have a concatenated string of user ID + trial #
+                continue
+            user, trial = split.group(1), int(split.group(2))
+            if objscore != 'None':
+                objscore = int(objscore)
+                
+            p = {
+                'user': user,
+                'trial': trial,
+                'selfscore': selfscore,
+                'objscore': objscore,
+                'objsub': objsub,
+                'path': m
+            }
+            
+            individual_data = pd.read_csv(p['path'])
+            # expand as needed
+            # assuming units are in meters (convert to centimeters)
+            SLTx, SLTy, SLTz = individual_data['SLTx']*100, individual_data['SLTy']*100, individual_data['SLTz']*100
+            SLTTVx, SLTTVy, SLTTVz = individual_data['SLTTVx']*100, individual_data['SLTTVy']*100, individual_data['SLTTVz']*100
+            SLTRVx, SLTRVy, SLTRVz = individual_data['SLTRVx']*100, individual_data['SLTRVy']*100, individual_data['SLTRVz']*100
+            SLGA = individual_data['SLGA'] 
+            
+            SRTx, SRTy, SRTz = individual_data['SRTx']*100, individual_data['SRTy']*100, individual_data['SRTz']*100
+            SRTTVx, SRTTVy, SRTTVz = individual_data['SRTTVx']*100, individual_data['SRTTVy']*100, individual_data['SRTTVz']*100
+            SRTRVx, SRTRVy, SRTRVz = individual_data['SRTRVx']*100, individual_data['SRTRVy']*100, individual_data['SRTRVz']*100
+            SRGA = individual_data['SRGA']
+            
+            frame = individual_data['frame']
+            
+            # expand as needed -- coordinate data only used
+            SLT = [(x, y, z) for x, y, z in zip(SLTx, SLTy, SLTz)] # list of 3d coordinates for SLAVE LEFT
+            SLT_x, SLT_y, SLT_z = [x for x in SLTx], [y for y in SLTy], [z for z in SLTz] # single axis data
+            
+            SRT = [(x, y, z) for x, y, z in zip(SRTx, SRTy, SRTz)] # list of 3d coordinates for SLAVE RIGHT
+            SRT_x, SRT_y, SRT_z = [x for x in SRTx], [y for y in SRTy], [z for z in SRTz] # single axis data
+                        
+            # PROCESSING (made subroutines for readability)
+            
+            # Time to Completion
+            timeToCompletion = time_to_completion(frame) # in seconds
+            
+            # Economy of Motion
+            econMotion_SLT = euclidean_distances(SLT) # in cm (assumed)
+            econMotion_SRT = euclidean_distances(SRT) 
+            
+            # Volume of Motion
+            volMotion_axis_SLT = ellipsoidGenRadiiOnly(np.array(SLT)) # numpy array expected
+            volMotion_SLT = compute_ellipsoid_volume(volMotion_axis_SLT) # in cm^3 (assumed)
+            volMotion_axis_SRT = ellipsoidGenRadiiOnly(np.array(SRT)) 
+            volMotion_SRT = compute_ellipsoid_volume(volMotion_axis_SRT)
+            
+            # 80% Volume of Motion
+            eighty_percent_points_SLT = extract_top_eighty(SLT_x, SLT_y, SLT_z) # 80% closest points to centroid
+            volMotion_eighty_axis_SLT = ellipsoidGenRadiiOnly(eighty_percent_points_SLT) 
+            volMotion_eighty_SLT = compute_ellipsoid_volume(volMotion_eighty_axis_SLT)
+            eighty_percent_points_SRT = extract_top_eighty(SRT_x, SRT_y, SRT_z) 
+            volMotion_eighty_axis_SRT = ellipsoidGenRadiiOnly(eighty_percent_points_SRT) 
+            volMotion_eighty_SRT = compute_ellipsoid_volume(volMotion_eighty_axis_SRT)
+            
+            # WRITE RESULTS 
+            row_left = {
+                'User': p['user'],
+                'Trial': p['trial'],
+                'Self-Claimed Level': p['selfscore'],
+                'GRS': p['objscore'],
+                'Respect for Tissue': p['objsub'][0],
+                'Suture/Needle Handling':p['objsub'][1],
+                'Time and Motion':p['objsub'][2],
+                'Flow of Operation':p['objsub'][3],
+                'Overall Performance':p['objsub'][4],
+                'Quality of Final Product':p['objsub'][5],
+                'Volume of Motion': volMotion_SLT,
+                '80% Volume of Motion': volMotion_eighty_SLT,
+                'Time to Completion': timeToCompletion,
+                'Economy of Motion': econMotion_SLT
+            }
+            df_left.loc[len(df_left)] = row_left
+
+            row_right = {
+                'User': p['user'],
+                'Trial': p['trial'],
+                'Self-Claimed Level': p['selfscore'],
+                'GRS': p['objscore'],
+                'Respect for Tissue': p['objsub'][0],
+                'Suture/Needle Handling':p['objsub'][1],
+                'Time and Motion':p['objsub'][2],
+                'Flow of Operation':p['objsub'][3],
+                'Overall Performance':p['objsub'][4],
+                'Quality of Final Product':p['objsub'][5],
+                'Volume of Motion': volMotion_SRT,
+                '80% Volume of Motion': volMotion_eighty_SRT,
+                'Time to Completion': timeToCompletion,
+                'Economy of Motion': econMotion_SRT
+            }
+            df_right.loc[len(df_right)] = row_right
+        
+        # export df_left and df_right
+        dfleftcsvname = i + '_' + 'Compilation' + '_' + 'Total' + '_' + 'Left' + '.csv' # e.g. Knot_Tying_Compilation_Total_Left.csv
+        dfrightcsvname = i + '_' + 'Compilation' + '_' + 'Total' + '_' + 'Right' + '.csv'
+        dfleftexportpath = os.path.join(outputindividualtaskpwd, dfleftcsvname) # e.g. (.../processed-datasets/OUTPUT-INDIVIDUAL/Knot_Tying_, Knot_Tying_Compilation_Total_Left.csv)
+        dfrightexportpath = os.path.join(outputindividualtaskpwd, dfrightcsvname)
+
+        df_left.to_csv(dfleftexportpath, index=True)
+        df_right.to_csv(dfrightexportpath, index=True)
