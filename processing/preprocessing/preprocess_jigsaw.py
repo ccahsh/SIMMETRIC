@@ -108,14 +108,14 @@ if __name__ == '__main__':
     outputpwd = os.path.join(output_dir, 'OUTPUT')
     override_make_folder(outputpwd)
     
-    outputindividualpwd = os.path.join(output_dir, 'OUTPUT-INDIVIDUAL')
+    outputindividualpwd = os.path.join(output_dir, 'OUTPUT-temp')
     override_make_folder(outputindividualpwd)
 
     for i in folder: # later fix the i, j, k... var names
         # new folder
         outputtaskpwd = os.path.join(output_dir, 'OUTPUT', i)
         override_make_folder(outputtaskpwd)
-        outputindividualtaskpwd = os.path.join(output_dir, 'OUTPUT-INDIVIDUAL', i)
+        outputindividualtaskpwd = os.path.join(output_dir, 'OUTPUT-temp', i)
         override_make_folder(outputindividualtaskpwd)
         
         path = os.path.join(os.getcwd(), i, i) # double folder
