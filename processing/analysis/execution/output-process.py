@@ -128,8 +128,6 @@ if __name__ == '__main__':
                 if 'None' in csv_name:
                     continue # ignore CSV files w/o evaluation metrics
                 split_info = os.path.splitext(m)[0].split('_')[1:]
-                print(m)
-                print(split_info)
                 if (len(split_info) < 3): # ignore csv file that doesn't have a specified gesture
                     continue
                 if len(split_info) == 3:
@@ -335,8 +333,6 @@ if __name__ == '__main__':
             
         for m in csv_files:
             split_info = os.path.splitext(m)[0].split('_')[1:]
-            print(m)
-            print(split_info)
             user_trial, objscore = split_info[-9:-7] # e.g. ('C002', '22'), works with all task types (e.g. Knot_Tying vs. Suturing)
             objsub = split_info[-7:-1]
             selfscore = split_info[-1]
