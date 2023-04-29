@@ -3,9 +3,36 @@ import sys
 import math
 import numpy as np
 import pandas as pd 
+import glob
 import shutil
 from scipy.spatial import ConvexHull
+from scipy.stats import pearsonr
 import re
+            
+def correlation_output(X, Y, filepaths):
+    vvthreshold = 1
+    result_list = []
+    for filepath in filepaths:
+        df = pd.read_csv(filepath)
+        filename = os.path.basename(filepath)
+        for x in X: # derived data
+            for y in Y: # eval metrics
+                dfcopy = df.copy()
+                if x == 'S - 80% V / V Ratio' or x == 'M - 80% V / V Ratio': # if evaluating v/v ratio
+                    dfcopy = df[df[x] <= vvthreshold] # ignore error values
+                if dfcopy.shape[0] <= 2:
+                    continue # for correlation, x and y must have length at least 2
+                try:
+                    x_var = np.var(dfcopy[x])
+                    y_var = np.var(dfcopy[y])
+                    if x_var == 0 or y_var == 0:
+                        continue  # skip if either x or y is constant
+                    corr_coeff, _ = pearsonr(dfcopy[x], dfcopy[y])     
+                    result_list += [(filename, x, y, corr_coeff)]
+                except:
+                    continue # skip to next iteration if an exception is raised
+    result_sorted = sorted(result_list, key=lambda x: abs(x[3]), reverse=True) # sort by greatest correlation
+    return result_sorted            
             
 def no_preprocessed_datasets_OUTPUT_abort(path):
     if not os.path.exists(path):
@@ -171,10 +198,15 @@ if __name__ == '__main__':
                 'Flow of Operation',
                 'Overall Performance',
                 'Quality of Final Product',
-                'Volume of Motion',
-                '80% Volume of Motion', 
+                'S - Volume of Motion',
+                'S - 80% Volume of Motion', 
+                'S - 80% V / V Ratio',
+                'M - Volume of Motion',
+                'M - 80% Volume of Motion', 
+                'M - 80% V / V Ratio',
                 'Time to Completion', 
-                'Economy of Motion'
+                'S - Economy of Motion',
+                'M - Economy of Motion'
                 ])
             # create df_right with same columns as df_left
             df_right = pd.DataFrame(columns=df_left.columns)
@@ -207,6 +239,16 @@ if __name__ == '__main__':
                         SRTRVx, SRTRVy, SRTRVz = gesture_data['SRTRVx']*100, gesture_data['SRTRVy']*100, gesture_data['SRTRVz']*100
                         SRGA = gesture_data['SRGA']
                         
+                        MLTx, MLTy, MLTz = gesture_data['MLTx']*100, gesture_data['MLTy']*100, gesture_data['MLTz']*100
+                        MLTTVx, MLTTVy, MLTTVz = gesture_data['MLTTVx']*100, gesture_data['MLTTVy']*100, gesture_data['MLTTVz']*100
+                        MLTRVx, MLTRVy, MLTRVz = gesture_data['MLTRVx']*100, gesture_data['MLTRVy']*100, gesture_data['MLTRVz']*100
+                        MLGA = gesture_data['MLGA'] 
+                        
+                        MRTx, MRTy, MRTz = gesture_data['MRTx']*100, gesture_data['MRTy']*100, gesture_data['MRTz']*100
+                        MRTTVx, MRTTVy, MRTTVz = gesture_data['MRTTVx']*100, gesture_data['MRTTVy']*100, gesture_data['MRTTVz']*100
+                        MRTRVx, MRTRVy, MRTRVz = gesture_data['MRTRVx']*100, gesture_data['MRTRVy']*100, gesture_data['MRTRVz']*100
+                        MRGA = gesture_data['MRGA']
+                        
                         frame = gesture_data['frame']
                         
                         # expand as needed -- coordinate data only used
@@ -215,6 +257,12 @@ if __name__ == '__main__':
                         
                         SRT = [(x, y, z) for x, y, z in zip(SRTx, SRTy, SRTz)] # list of 3d coordinates for SLAVE RIGHT
                         SRT_x, SRT_y, SRT_z = [x for x in SRTx], [y for y in SRTy], [z for z in SRTz] # single axis data
+                        
+                        MLT = [(x, y, z) for x, y, z in zip(MLTx, MLTy, MLTz)] # list of 3d coordinates for MASTER LEFT
+                        MLT_x, MLT_y, MLT_z = [x for x in MLTx], [y for y in MLTy], [z for z in MLTz] # single axis data
+                        
+                        MRT = [(x, y, z) for x, y, z in zip(MRTx, MRTy, MRTz)] # list of 3d coordinates for MASTER RIGHT
+                        MRT_x, MRT_y, MRT_z = [x for x in MRTx], [y for y in MRTy], [z for z in MRTz] # single axis data
                                     
                         # PROCESSING (made subroutines for readability)
                         
@@ -224,20 +272,36 @@ if __name__ == '__main__':
                         # Economy of Motion
                         econMotion_SLT = euclidean_distances(SLT) # in cm (assumed)
                         econMotion_SRT = euclidean_distances(SRT) 
+                        econMotion_MLT = euclidean_distances(MLT) # in cm (assumed)
+                        econMotion_MRT = euclidean_distances(MRT) 
                         
-                        # Volume of Motion
+                        # S - Volume of Motion
                         volMotion_axis_SLT = ellipsoidGenRadiiOnly(np.array(SLT)) # numpy array expected
                         volMotion_SLT = compute_ellipsoid_volume(volMotion_axis_SLT) # in cm^3 (assumed)
                         volMotion_axis_SRT = ellipsoidGenRadiiOnly(np.array(SRT)) 
                         volMotion_SRT = compute_ellipsoid_volume(volMotion_axis_SRT)
                         
-                        # 80% Volume of Motion
+                        # S - 80% Volume of Motion
                         eighty_percent_points_SLT = extract_top_eighty(SLT_x, SLT_y, SLT_z) # 80% closest points to centroid
                         volMotion_eighty_axis_SLT = ellipsoidGenRadiiOnly(eighty_percent_points_SLT) 
                         volMotion_eighty_SLT = compute_ellipsoid_volume(volMotion_eighty_axis_SLT)
                         eighty_percent_points_SRT = extract_top_eighty(SRT_x, SRT_y, SRT_z) 
                         volMotion_eighty_axis_SRT = ellipsoidGenRadiiOnly(eighty_percent_points_SRT) 
                         volMotion_eighty_SRT = compute_ellipsoid_volume(volMotion_eighty_axis_SRT)
+                        
+                        # M - Volume of Motion
+                        volMotion_axis_MLT = ellipsoidGenRadiiOnly(np.array(MLT)) # numpy array expected
+                        volMotion_MLT = compute_ellipsoid_volume(volMotion_axis_MLT) # in cm^3 (assumed)
+                        volMotion_axis_MRT = ellipsoidGenRadiiOnly(np.array(MRT)) 
+                        volMotion_MRT = compute_ellipsoid_volume(volMotion_axis_MRT)
+                        
+                        # M - 80% Volume of Motion
+                        eighty_percent_points_MLT = extract_top_eighty(MLT_x, MLT_y, MLT_z) # 80% closest points to centroid
+                        volMotion_eighty_axis_MLT = ellipsoidGenRadiiOnly(eighty_percent_points_MLT) 
+                        volMotion_eighty_MLT = compute_ellipsoid_volume(volMotion_eighty_axis_MLT)
+                        eighty_percent_points_MRT = extract_top_eighty(MRT_x, MRT_y, MRT_z) 
+                        volMotion_eighty_axis_MRT = ellipsoidGenRadiiOnly(eighty_percent_points_MRT) 
+                        volMotion_eighty_MRT = compute_ellipsoid_volume(volMotion_eighty_axis_MRT)
                         
                         # WRITE RESULTS 
                         row_left = {
@@ -252,10 +316,15 @@ if __name__ == '__main__':
                             'Flow of Operation':p['objsub'][3],
                             'Overall Performance':p['objsub'][4],
                             'Quality of Final Product':p['objsub'][5],
-                            'Volume of Motion': volMotion_SLT,
-                            '80% Volume of Motion': volMotion_eighty_SLT,
+                            'S - Volume of Motion': volMotion_SLT,
+                            'S - 80% Volume of Motion': volMotion_eighty_SLT, 
+                            'S - 80% V / V Ratio': volMotion_eighty_SLT / volMotion_SLT,
+                            'M - Volume of Motion': volMotion_MLT,
+                            'M - 80% Volume of Motion': volMotion_eighty_MLT, 
+                            'M - 80% V / V Ratio': volMotion_eighty_MLT / volMotion_MLT,
                             'Time to Completion': timeToCompletion,
-                            'Economy of Motion': econMotion_SLT
+                            'S - Economy of Motion': econMotion_SLT,
+                            'M - Economy of Motion': econMotion_MLT
                         }
                         df_left.loc[len(df_left)] = row_left
 
@@ -271,10 +340,15 @@ if __name__ == '__main__':
                             'Flow of Operation':p['objsub'][3],
                             'Overall Performance':p['objsub'][4],
                             'Quality of Final Product':p['objsub'][5],
-                            'Volume of Motion': volMotion_SRT,
-                            '80% Volume of Motion': volMotion_eighty_SRT,
+                            'S - Volume of Motion': volMotion_SRT,
+                            'S - 80% Volume of Motion': volMotion_eighty_SRT, 
+                            'S - 80% V / V Ratio': volMotion_eighty_SRT / volMotion_SRT,
+                            'M - Volume of Motion': volMotion_MRT,
+                            'M - 80% Volume of Motion': volMotion_eighty_MRT, 
+                            'M - 80% V / V Ratio': volMotion_eighty_MRT / volMotion_MRT,
                             'Time to Completion': timeToCompletion,
-                            'Economy of Motion': econMotion_SRT
+                            'S - Economy of Motion': econMotion_SRT,
+                            'M - Economy of Motion': econMotion_MRT
                         }
                         df_right.loc[len(df_right)] = row_right
             
@@ -323,10 +397,15 @@ if __name__ == '__main__':
             'Flow of Operation',
             'Overall Performance',
             'Quality of Final Product',
-            'Volume of Motion',
-            '80% Volume of Motion', 
+            'S - Volume of Motion',
+            'S - 80% Volume of Motion', 
+            'S - 80% V / V Ratio',
+            'M - Volume of Motion',
+            'M - 80% Volume of Motion', 
+            'M - 80% V / V Ratio',
             'Time to Completion', 
-            'Economy of Motion'
+            'S - Economy of Motion',
+            'M - Economy of Motion'
         ])
         # create df_right with same columns as df_left
         df_right = pd.DataFrame(columns=df_left.columns)
@@ -353,6 +432,7 @@ if __name__ == '__main__':
             }
             
             individual_data = pd.read_csv(p['path'])
+            
             # expand as needed
             # assuming units are in meters (convert to centimeters)
             SLTx, SLTy, SLTz = individual_data['SLTx']*100, individual_data['SLTy']*100, individual_data['SLTz']*100
@@ -365,6 +445,16 @@ if __name__ == '__main__':
             SRTRVx, SRTRVy, SRTRVz = individual_data['SRTRVx']*100, individual_data['SRTRVy']*100, individual_data['SRTRVz']*100
             SRGA = individual_data['SRGA']
             
+            MLTx, MLTy, MLTz = individual_data['MLTx']*100, individual_data['MLTy']*100, individual_data['MLTz']*100
+            MLTTVx, MLTTVy, MLTTVz = individual_data['MLTTVx']*100, individual_data['MLTTVy']*100, individual_data['MLTTVz']*100
+            MLTRVx, MLTRVy, MLTRVz = individual_data['MLTRVx']*100, individual_data['MLTRVy']*100, individual_data['MLTRVz']*100
+            MLGA = individual_data['MLGA'] 
+            
+            MRTx, MRTy, MRTz = individual_data['MRTx']*100, individual_data['MRTy']*100, individual_data['MRTz']*100
+            MRTTVx, MRTTVy, MRTTVz = individual_data['MRTTVx']*100, individual_data['MRTTVy']*100, individual_data['MRTTVz']*100
+            MRTRVx, MRTRVy, MRTRVz = individual_data['MRTRVx']*100, individual_data['MRTRVy']*100, individual_data['MRTRVz']*100
+            MRGA = individual_data['MRGA']
+            
             frame = individual_data['frame']
             
             # expand as needed -- coordinate data only used
@@ -373,6 +463,12 @@ if __name__ == '__main__':
             
             SRT = [(x, y, z) for x, y, z in zip(SRTx, SRTy, SRTz)] # list of 3d coordinates for SLAVE RIGHT
             SRT_x, SRT_y, SRT_z = [x for x in SRTx], [y for y in SRTy], [z for z in SRTz] # single axis data
+            
+            MLT = [(x, y, z) for x, y, z in zip(MLTx, MLTy, MLTz)] # list of 3d coordinates for MASTER LEFT
+            MLT_x, MLT_y, MLT_z = [x for x in MLTx], [y for y in MLTy], [z for z in MLTz] # single axis data
+            
+            MRT = [(x, y, z) for x, y, z in zip(MRTx, MRTy, MRTz)] # list of 3d coordinates for MASTER RIGHT
+            MRT_x, MRT_y, MRT_z = [x for x in MRTx], [y for y in MRTy], [z for z in MRTz] # single axis data
                         
             # PROCESSING (made subroutines for readability)
             
@@ -382,20 +478,36 @@ if __name__ == '__main__':
             # Economy of Motion
             econMotion_SLT = euclidean_distances(SLT) # in cm (assumed)
             econMotion_SRT = euclidean_distances(SRT) 
+            econMotion_MLT = euclidean_distances(MLT) # in cm (assumed)
+            econMotion_MRT = euclidean_distances(MRT) 
             
-            # Volume of Motion
+            # S - Volume of Motion
             volMotion_axis_SLT = ellipsoidGenRadiiOnly(np.array(SLT)) # numpy array expected
             volMotion_SLT = compute_ellipsoid_volume(volMotion_axis_SLT) # in cm^3 (assumed)
             volMotion_axis_SRT = ellipsoidGenRadiiOnly(np.array(SRT)) 
             volMotion_SRT = compute_ellipsoid_volume(volMotion_axis_SRT)
             
-            # 80% Volume of Motion
+            # S - 80% Volume of Motion
             eighty_percent_points_SLT = extract_top_eighty(SLT_x, SLT_y, SLT_z) # 80% closest points to centroid
             volMotion_eighty_axis_SLT = ellipsoidGenRadiiOnly(eighty_percent_points_SLT) 
             volMotion_eighty_SLT = compute_ellipsoid_volume(volMotion_eighty_axis_SLT)
             eighty_percent_points_SRT = extract_top_eighty(SRT_x, SRT_y, SRT_z) 
             volMotion_eighty_axis_SRT = ellipsoidGenRadiiOnly(eighty_percent_points_SRT) 
             volMotion_eighty_SRT = compute_ellipsoid_volume(volMotion_eighty_axis_SRT)
+            
+            # M - Volume of Motion
+            volMotion_axis_MLT = ellipsoidGenRadiiOnly(np.array(MLT)) # numpy array expected
+            volMotion_MLT = compute_ellipsoid_volume(volMotion_axis_MLT) # in cm^3 (assumed)
+            volMotion_axis_MRT = ellipsoidGenRadiiOnly(np.array(MRT)) 
+            volMotion_MRT = compute_ellipsoid_volume(volMotion_axis_MRT)
+            
+            # M - 80% Volume of Motion
+            eighty_percent_points_MLT = extract_top_eighty(MLT_x, MLT_y, MLT_z) # 80% closest points to centroid
+            volMotion_eighty_axis_MLT = ellipsoidGenRadiiOnly(eighty_percent_points_MLT) 
+            volMotion_eighty_MLT = compute_ellipsoid_volume(volMotion_eighty_axis_MLT)
+            eighty_percent_points_MRT = extract_top_eighty(MRT_x, MRT_y, MRT_z) 
+            volMotion_eighty_axis_MRT = ellipsoidGenRadiiOnly(eighty_percent_points_MRT) 
+            volMotion_eighty_MRT = compute_ellipsoid_volume(volMotion_eighty_axis_MRT)
             
             # WRITE RESULTS 
             row_left = {
@@ -409,10 +521,15 @@ if __name__ == '__main__':
                 'Flow of Operation':p['objsub'][3],
                 'Overall Performance':p['objsub'][4],
                 'Quality of Final Product':p['objsub'][5],
-                'Volume of Motion': volMotion_SLT,
-                '80% Volume of Motion': volMotion_eighty_SLT,
+                'S - Volume of Motion': volMotion_SLT,
+                'S - 80% Volume of Motion': volMotion_eighty_SLT, 
+                'S - 80% V / V Ratio': volMotion_eighty_SLT / volMotion_SLT,
+                'M - Volume of Motion': volMotion_MLT,
+                'M - 80% Volume of Motion': volMotion_eighty_MLT, 
+                'M - 80% V / V Ratio': volMotion_eighty_MLT / volMotion_MLT,
                 'Time to Completion': timeToCompletion,
-                'Economy of Motion': econMotion_SLT
+                'S - Economy of Motion': econMotion_SLT,
+                'M - Economy of Motion': econMotion_MLT
             }
             df_left.loc[len(df_left)] = row_left
 
@@ -427,10 +544,15 @@ if __name__ == '__main__':
                 'Flow of Operation':p['objsub'][3],
                 'Overall Performance':p['objsub'][4],
                 'Quality of Final Product':p['objsub'][5],
-                'Volume of Motion': volMotion_SRT,
-                '80% Volume of Motion': volMotion_eighty_SRT,
+                'S - Volume of Motion': volMotion_SRT,
+                'S - 80% Volume of Motion': volMotion_eighty_SRT, 
+                'S - 80% V / V Ratio': volMotion_eighty_SRT / volMotion_SRT,
+                'M - Volume of Motion': volMotion_MRT,
+                'M - 80% Volume of Motion': volMotion_eighty_MRT, 
+                'M - 80% V / V Ratio': volMotion_eighty_MRT / volMotion_MRT,
                 'Time to Completion': timeToCompletion,
-                'Economy of Motion': econMotion_SRT
+                'S - Economy of Motion': econMotion_SRT,
+                'M - Economy of Motion': econMotion_MRT
             }
             df_right.loc[len(df_right)] = row_right
         
@@ -442,3 +564,66 @@ if __name__ == '__main__':
 
         df_left.to_csv(dfleftexportpath, index=True)
         df_right.to_csv(dfrightexportpath, index=True)
+
+    # OUTPUT 3: Correlations for ALL GENERATED CSV FILES
+    
+    outputgesturespwd = os.path.join(pwd, 'OUTPUT-GESTURES')
+    outputindividualtaskpwd = os.path.join(pwd, 'OUTPUT-INDIVIDUAL')
+    
+    simmetric_metrics = [
+        'S - Volume of Motion',
+        'S - 80% Volume of Motion', 
+        'S - 80% V / V Ratio',
+        'M - Volume of Motion',
+        'M - 80% Volume of Motion', 
+        'M - 80% V / V Ratio',
+        'Time to Completion',
+        'S - Economy of Motion',
+        'M - Economy of Motion'
+    ]
+    evaluation_metrics = [
+        'GRS',
+        'Respect for Tissue',
+        'Suture/Needle Handling',
+        'Time and Motion',
+        'Flow of Operation',
+        'Overall Performance',
+        'Quality of Final Product'
+    ]
+    
+    os.chdir(outputgesturespwd)
+    file_list = glob.glob('**', recursive=True)
+    child_files = [f for f in file_list if f.endswith('.csv')]
+    
+    gestures_corr_results = correlation_output(simmetric_metrics, evaluation_metrics, child_files)
+    
+    with open('summary-gestures.txt', 'w') as f:
+        for result in gestures_corr_results:
+            result_str = map(str, result)
+            line = ','.join(result_str) + '\n'
+            f.write(line)
+    
+    os.chdir(outputindividualtaskpwd)
+    file_list = glob.glob('**', recursive=True)
+    child_files = [f for f in file_list if f.endswith('.csv')]
+    
+    individual_corr_results = correlation_output(simmetric_metrics, evaluation_metrics, child_files)
+
+    with open('summary-individual.txt', 'w') as f:
+        for result in individual_corr_results:
+            result_str = map(str, result)
+            line = ','.join(result_str) + '\n'
+            f.write(line)
+
+    overall_corr_results = gestures_corr_results + individual_corr_results
+    overall_result_sorted = sorted(overall_corr_results, key=lambda x: abs(x[3]), reverse=True) # sort by greatest correlation
+    
+    outputoverallpwd = os.path.join(pwd, 'OUTPUT-OVERALL')
+    override_make_folder(outputoverallpwd)
+    os.chdir(outputoverallpwd)
+    
+    with open('summary-overall.txt', 'w') as f:
+        for result in overall_result_sorted:
+            result_str = map(str, result)
+            line = ' ,'.join(result_str) + '\n'
+            f.write(line)

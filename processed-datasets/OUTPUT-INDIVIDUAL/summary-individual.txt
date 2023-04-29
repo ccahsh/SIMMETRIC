@@ -1,0 +1,378 @@
+Knot_Tying_Compilation_Total_Left.csv,Time to Completion,GRS,-0.693876903343492
+Knot_Tying_Compilation_Total_Right.csv,Time to Completion,GRS,-0.693876903343492
+Knot_Tying_Compilation_Total_Left.csv,Time to Completion,Time and Motion,-0.6850154106190594
+Knot_Tying_Compilation_Total_Right.csv,Time to Completion,Time and Motion,-0.6850154106190594
+Knot_Tying_Compilation_Total_Left.csv,Time to Completion,Flow of Operation,-0.6600827132753052
+Knot_Tying_Compilation_Total_Right.csv,Time to Completion,Flow of Operation,-0.6600827132753052
+Knot_Tying_Compilation_Total_Left.csv,Time to Completion,Overall Performance,-0.6402885160359639
+Knot_Tying_Compilation_Total_Right.csv,Time to Completion,Overall Performance,-0.6402885160359639
+Knot_Tying_Compilation_Total_Left.csv,Time to Completion,Quality of Final Product,-0.601128840969875
+Knot_Tying_Compilation_Total_Right.csv,Time to Completion,Quality of Final Product,-0.601128840969875
+Knot_Tying_Compilation_Total_Left.csv,Time to Completion,Respect for Tissue,-0.5960036760183414
+Knot_Tying_Compilation_Total_Right.csv,Time to Completion,Respect for Tissue,-0.5960036760183414
+Knot_Tying_Compilation_Total_Left.csv,M - Economy of Motion,Flow of Operation,-0.5945770111381903
+Knot_Tying_Compilation_Total_Right.csv,S - Economy of Motion,Flow of Operation,-0.5942817145501509
+Knot_Tying_Compilation_Total_Left.csv,M - 80% V / V Ratio,Time and Motion,0.5920379018699693
+Knot_Tying_Compilation_Total_Left.csv,M - Economy of Motion,Time and Motion,-0.5860049433674827
+Knot_Tying_Compilation_Total_Right.csv,S - Economy of Motion,Time and Motion,-0.5859347383566735
+Knot_Tying_Compilation_Total_Right.csv,M - 80% Volume of Motion,GRS,0.5846129378756705
+Knot_Tying_Compilation_Total_Left.csv,S - 80% Volume of Motion,GRS,0.5845543187131065
+Knot_Tying_Compilation_Total_Right.csv,S - 80% V / V Ratio,Time and Motion,0.5818626183398677
+Knot_Tying_Compilation_Total_Left.csv,S - 80% Volume of Motion,Flow of Operation,0.5742236423463236
+Knot_Tying_Compilation_Total_Right.csv,M - 80% Volume of Motion,Flow of Operation,0.5724827176684959
+Knot_Tying_Compilation_Total_Right.csv,S - Economy of Motion,GRS,-0.5677923570096036
+Knot_Tying_Compilation_Total_Left.csv,M - Economy of Motion,GRS,-0.5677317935495685
+Knot_Tying_Compilation_Total_Right.csv,S - Economy of Motion,Overall Performance,-0.5457444552166576
+Knot_Tying_Compilation_Total_Left.csv,M - Economy of Motion,Overall Performance,-0.5454915345286794
+Knot_Tying_Compilation_Total_Left.csv,M - 80% V / V Ratio,Overall Performance,0.5400375151003773
+Suturing_Compilation_Total_Right.csv,S - Volume of Motion,Overall Performance,0.5365118679681702
+Suturing_Compilation_Total_Right.csv,S - Volume of Motion,Suture/Needle Handling,0.5314083567828122
+Knot_Tying_Compilation_Total_Right.csv,S - 80% V / V Ratio,Overall Performance,0.5301541801538172
+Knot_Tying_Compilation_Total_Left.csv,Time to Completion,Suture/Needle Handling,-0.5280104992183359
+Knot_Tying_Compilation_Total_Right.csv,Time to Completion,Suture/Needle Handling,-0.5280104992183359
+Knot_Tying_Compilation_Total_Left.csv,M - 80% V / V Ratio,GRS,0.5279473416443001
+Suturing_Compilation_Total_Right.csv,S - Volume of Motion,GRS,0.5279022195010111
+Suturing_Compilation_Total_Left.csv,Time to Completion,Time and Motion,-0.5258133287563114
+Suturing_Compilation_Total_Right.csv,Time to Completion,Time and Motion,-0.5258133287563114
+Knot_Tying_Compilation_Total_Left.csv,S - Volume of Motion,GRS,0.5247333723220333
+Knot_Tying_Compilation_Total_Right.csv,M - 80% Volume of Motion,Time and Motion,0.5245614269019395
+Knot_Tying_Compilation_Total_Left.csv,S - 80% Volume of Motion,Time and Motion,0.5233794090462005
+Knot_Tying_Compilation_Total_Right.csv,S - 80% V / V Ratio,GRS,0.5213860078634291
+Knot_Tying_Compilation_Total_Right.csv,M - 80% Volume of Motion,Suture/Needle Handling,0.5213794828174579
+Knot_Tying_Compilation_Total_Right.csv,M - Volume of Motion,GRS,0.5205296719547864
+Knot_Tying_Compilation_Total_Left.csv,S - 80% Volume of Motion,Suture/Needle Handling,0.5186821064032239
+Knot_Tying_Compilation_Total_Left.csv,S - Volume of Motion,Suture/Needle Handling,0.5182006576786888
+Knot_Tying_Compilation_Total_Right.csv,M - Volume of Motion,Suture/Needle Handling,0.517119208219013
+Knot_Tying_Compilation_Total_Left.csv,S - Volume of Motion,Time and Motion,0.5145418796277699
+Knot_Tying_Compilation_Total_Right.csv,M - 80% Volume of Motion,Quality of Final Product,0.5142969472348986
+Knot_Tying_Compilation_Total_Right.csv,M - Volume of Motion,Time and Motion,0.5109786286128162
+Knot_Tying_Compilation_Total_Left.csv,S - 80% Volume of Motion,Quality of Final Product,0.5076809094100879
+Knot_Tying_Compilation_Total_Right.csv,M - 80% Volume of Motion,Overall Performance,0.5048111118608789
+Knot_Tying_Compilation_Total_Left.csv,S - 80% Volume of Motion,Overall Performance,0.503739233104779
+Knot_Tying_Compilation_Total_Left.csv,S - 80% Volume of Motion,Respect for Tissue,0.4968314744749721
+Knot_Tying_Compilation_Total_Left.csv,S - Volume of Motion,Respect for Tissue,0.49494420929698235
+Knot_Tying_Compilation_Total_Right.csv,M - Volume of Motion,Respect for Tissue,0.4945678549884143
+Knot_Tying_Compilation_Total_Right.csv,M - 80% Volume of Motion,Respect for Tissue,0.48824442197064577
+Knot_Tying_Compilation_Total_Right.csv,S - 80% V / V Ratio,Quality of Final Product,0.47662031911680525
+Knot_Tying_Compilation_Total_Left.csv,M - 80% V / V Ratio,Quality of Final Product,0.47445590867845744
+Suturing_Compilation_Total_Right.csv,S - Volume of Motion,Time and Motion,0.46692161163815027
+Suturing_Compilation_Total_Right.csv,M - Economy of Motion,Time and Motion,-0.46493209761624593
+Suturing_Compilation_Total_Left.csv,M - Volume of Motion,Overall Performance,0.46359687318865694
+Suturing_Compilation_Total_Left.csv,S - Economy of Motion,Time and Motion,-0.46353497134216703
+Suturing_Compilation_Total_Right.csv,S - Volume of Motion,Respect for Tissue,0.46219858764822674
+Knot_Tying_Compilation_Total_Left.csv,S - Volume of Motion,Overall Performance,0.45534154992795356
+Knot_Tying_Compilation_Total_Right.csv,S - Economy of Motion,Quality of Final Product,-0.4534947083530421
+Knot_Tying_Compilation_Total_Left.csv,M - Economy of Motion,Quality of Final Product,-0.4531510348535404
+Knot_Tying_Compilation_Total_Right.csv,M - Volume of Motion,Overall Performance,0.44919619097901553
+Knot_Tying_Compilation_Total_Left.csv,M - 80% Volume of Motion,Quality of Final Product,0.44450987647824464
+Knot_Tying_Compilation_Total_Right.csv,S - 80% Volume of Motion,Quality of Final Product,0.4408164426035383
+Knot_Tying_Compilation_Total_Left.csv,M - Economy of Motion,Respect for Tissue,-0.43921262557452156
+Knot_Tying_Compilation_Total_Right.csv,S - Economy of Motion,Respect for Tissue,-0.43827340211044724
+Suturing_Compilation_Total_Left.csv,Time to Completion,Overall Performance,-0.4366903685864129
+Suturing_Compilation_Total_Right.csv,Time to Completion,Overall Performance,-0.4366903685864129
+Knot_Tying_Compilation_Total_Left.csv,M - 80% Volume of Motion,GRS,0.43609799108967967
+Suturing_Compilation_Total_Right.csv,M - Economy of Motion,Overall Performance,-0.43333180323314724
+Suturing_Compilation_Total_Left.csv,S - Economy of Motion,Overall Performance,-0.43190665513680465
+Suturing_Compilation_Total_Right.csv,S - Volume of Motion,Flow of Operation,0.430295272286299
+Suturing_Compilation_Total_Left.csv,M - Volume of Motion,GRS,0.42921852110331354
+Suturing_Compilation_Total_Right.csv,S - Volume of Motion,Quality of Final Product,0.42729799825629045
+Knot_Tying_Compilation_Total_Right.csv,S - Economy of Motion,Suture/Needle Handling,-0.4263288324762355
+Knot_Tying_Compilation_Total_Left.csv,M - Economy of Motion,Suture/Needle Handling,-0.4251986290666679
+Knot_Tying_Compilation_Total_Right.csv,S - 80% Volume of Motion,GRS,0.42498869716027143
+Knot_Tying_Compilation_Total_Left.csv,S - Volume of Motion,Flow of Operation,0.4235773962707654
+Knot_Tying_Compilation_Total_Right.csv,M - Volume of Motion,Flow of Operation,0.4202995219395112
+Suturing_Compilation_Total_Left.csv,M - 80% Volume of Motion,Suture/Needle Handling,0.4198320670054995
+Suturing_Compilation_Total_Left.csv,M - Volume of Motion,Suture/Needle Handling,0.41956856054396374
+Needle_Passing_Compilation_Total_Left.csv,S - Economy of Motion,GRS,-0.4188611694671575
+Suturing_Compilation_Total_Right.csv,S - 80% Volume of Motion,Suture/Needle Handling,0.418219483370103
+Needle_Passing_Compilation_Total_Right.csv,M - Economy of Motion,GRS,-0.4178864616422918
+Knot_Tying_Compilation_Total_Left.csv,M - 80% V / V Ratio,Suture/Needle Handling,0.4132729616992513
+Knot_Tying_Compilation_Total_Left.csv,M - 80% V / V Ratio,Respect for Tissue,0.41139956479535783
+Knot_Tying_Compilation_Total_Left.csv,M - 80% V / V Ratio,Flow of Operation,0.4091527397606416
+Knot_Tying_Compilation_Total_Left.csv,M - 80% Volume of Motion,Suture/Needle Handling,0.40713125777184617
+Knot_Tying_Compilation_Total_Right.csv,S - 80% V / V Ratio,Suture/Needle Handling,0.40557120060455726
+Knot_Tying_Compilation_Total_Left.csv,M - 80% Volume of Motion,Time and Motion,0.40545684496201456
+Knot_Tying_Compilation_Total_Right.csv,S - 80% V / V Ratio,Respect for Tissue,0.40538487269676815
+Needle_Passing_Compilation_Total_Left.csv,S - Economy of Motion,Overall Performance,-0.40535164399435597
+Needle_Passing_Compilation_Total_Right.csv,M - Economy of Motion,Overall Performance,-0.4051722431623683
+Knot_Tying_Compilation_Total_Right.csv,S - 80% V / V Ratio,Flow of Operation,0.40510929095189674
+Suturing_Compilation_Total_Left.csv,M - Volume of Motion,Time and Motion,0.4008543309628983
+Suturing_Compilation_Total_Left.csv,Time to Completion,Flow of Operation,-0.39745662479613997
+Suturing_Compilation_Total_Right.csv,Time to Completion,Flow of Operation,-0.39745662479613997
+Knot_Tying_Compilation_Total_Left.csv,S - Volume of Motion,Quality of Final Product,0.39637358310034926
+Knot_Tying_Compilation_Total_Right.csv,S - 80% Volume of Motion,Suture/Needle Handling,0.3947556443408261
+Knot_Tying_Compilation_Total_Right.csv,S - 80% Volume of Motion,Time and Motion,0.3923094675717111
+Knot_Tying_Compilation_Total_Left.csv,M - 80% Volume of Motion,Respect for Tissue,0.38875769951516165
+Knot_Tying_Compilation_Total_Right.csv,M - Volume of Motion,Quality of Final Product,0.3881822257843695
+Suturing_Compilation_Total_Left.csv,M - Volume of Motion,Respect for Tissue,0.38731393478705645
+Needle_Passing_Compilation_Total_Left.csv,Time to Completion,Suture/Needle Handling,-0.38646799665044196
+Needle_Passing_Compilation_Total_Right.csv,Time to Completion,Suture/Needle Handling,-0.38646799665044196
+Needle_Passing_Compilation_Total_Left.csv,S - 80% V / V Ratio,Suture/Needle Handling,-0.3836261454077588
+Needle_Passing_Compilation_Total_Left.csv,S - Economy of Motion,Respect for Tissue,-0.3787550932435633
+Needle_Passing_Compilation_Total_Right.csv,M - Economy of Motion,Respect for Tissue,-0.3779916170177397
+Knot_Tying_Compilation_Total_Right.csv,M - Economy of Motion,Flow of Operation,-0.3774582634046354
+Needle_Passing_Compilation_Total_Left.csv,S - Economy of Motion,Suture/Needle Handling,-0.3772239108623708
+Knot_Tying_Compilation_Total_Left.csv,S - Economy of Motion,Flow of Operation,-0.37666606146639
+Needle_Passing_Compilation_Total_Right.csv,M - Economy of Motion,Suture/Needle Handling,-0.375509844892852
+Suturing_Compilation_Total_Left.csv,M - 80% V / V Ratio,Respect for Tissue,-0.37520620266506577
+Knot_Tying_Compilation_Total_Right.csv,S - 80% Volume of Motion,Respect for Tissue,0.3735544771428263
+Needle_Passing_Compilation_Total_Right.csv,M - 80% V / V Ratio,Suture/Needle Handling,-0.370936463479067
+Needle_Passing_Compilation_Total_Left.csv,S - 80% V / V Ratio,Flow of Operation,-0.37068591034727394
+Suturing_Compilation_Total_Right.csv,S - 80% V / V Ratio,Respect for Tissue,-0.36842485955135246
+Suturing_Compilation_Total_Right.csv,S - 80% V / V Ratio,Quality of Final Product,-0.3675147297621212
+Suturing_Compilation_Total_Right.csv,M - Economy of Motion,Flow of Operation,-0.36711283600965666
+Suturing_Compilation_Total_Left.csv,S - Economy of Motion,Flow of Operation,-0.3652781169267054
+Suturing_Compilation_Total_Left.csv,M - 80% V / V Ratio,Quality of Final Product,-0.36443272516592806
+Needle_Passing_Compilation_Total_Left.csv,S - Economy of Motion,Quality of Final Product,-0.3627242894404089
+Needle_Passing_Compilation_Total_Right.csv,M - Economy of Motion,Quality of Final Product,-0.36214231504625394
+Suturing_Compilation_Total_Right.csv,M - Economy of Motion,GRS,-0.36144909506908535
+Suturing_Compilation_Total_Left.csv,Time to Completion,GRS,-0.36119339617224505
+Suturing_Compilation_Total_Right.csv,Time to Completion,GRS,-0.36119339617224505
+Needle_Passing_Compilation_Total_Right.csv,M - 80% V / V Ratio,Flow of Operation,-0.3606446190667985
+Suturing_Compilation_Total_Left.csv,S - Economy of Motion,GRS,-0.35970766690616757
+Suturing_Compilation_Total_Left.csv,M - 80% Volume of Motion,Overall Performance,0.35690440147852154
+Suturing_Compilation_Total_Right.csv,S - 80% Volume of Motion,Overall Performance,0.3568919223662763
+Knot_Tying_Compilation_Total_Left.csv,M - 80% Volume of Motion,Overall Performance,0.3541940296013685
+Needle_Passing_Compilation_Total_Left.csv,S - Economy of Motion,Time and Motion,-0.3530984166436798
+Needle_Passing_Compilation_Total_Left.csv,S - 80% V / V Ratio,Overall Performance,-0.35307955886831777
+Needle_Passing_Compilation_Total_Right.csv,M - Economy of Motion,Time and Motion,-0.3520884072535894
+Needle_Passing_Compilation_Total_Left.csv,Time to Completion,Overall Performance,-0.3519632726308979
+Needle_Passing_Compilation_Total_Right.csv,Time to Completion,Overall Performance,-0.3519632726308979
+Knot_Tying_Compilation_Total_Right.csv,S - 80% Volume of Motion,Overall Performance,0.3438216652077832
+Needle_Passing_Compilation_Total_Right.csv,M - 80% V / V Ratio,Overall Performance,-0.34096508012802723
+Suturing_Compilation_Total_Left.csv,M - 80% Volume of Motion,GRS,0.33979402946591575
+Suturing_Compilation_Total_Right.csv,S - 80% Volume of Motion,GRS,0.3386913251660572
+Suturing_Compilation_Total_Left.csv,Time to Completion,Suture/Needle Handling,-0.3362934174464265
+Suturing_Compilation_Total_Right.csv,Time to Completion,Suture/Needle Handling,-0.3362934174464265
+Knot_Tying_Compilation_Total_Right.csv,M - Economy of Motion,Suture/Needle Handling,-0.3336366457348582
+Knot_Tying_Compilation_Total_Left.csv,S - Economy of Motion,Suture/Needle Handling,-0.33357556463962396
+Knot_Tying_Compilation_Total_Left.csv,M - 80% Volume of Motion,Flow of Operation,0.32890575185541693
+Knot_Tying_Compilation_Total_Right.csv,S - 80% Volume of Motion,Flow of Operation,0.32470261717417387
+Suturing_Compilation_Total_Left.csv,M - Volume of Motion,Quality of Final Product,0.3236349435520167
+Suturing_Compilation_Total_Left.csv,M - Volume of Motion,Flow of Operation,0.3229631350100342
+Suturing_Compilation_Total_Left.csv,M - 80% V / V Ratio,Overall Performance,-0.31716055305175245
+Needle_Passing_Compilation_Total_Left.csv,S - Economy of Motion,Flow of Operation,-0.31558882953815015
+Needle_Passing_Compilation_Total_Right.csv,M - Economy of Motion,Flow of Operation,-0.3147706088457293
+Needle_Passing_Compilation_Total_Left.csv,Time to Completion,Flow of Operation,-0.3128175241847251
+Needle_Passing_Compilation_Total_Right.csv,Time to Completion,Flow of Operation,-0.3128175241847251
+Suturing_Compilation_Total_Left.csv,M - 80% Volume of Motion,Flow of Operation,0.3102418016897039
+Knot_Tying_Compilation_Total_Right.csv,M - Economy of Motion,GRS,-0.3094253329033988
+Suturing_Compilation_Total_Right.csv,S - 80% V / V Ratio,Overall Performance,-0.3091716713330523
+Knot_Tying_Compilation_Total_Left.csv,S - Economy of Motion,GRS,-0.3087293652923014
+Suturing_Compilation_Total_Right.csv,S - 80% V / V Ratio,GRS,-0.30716667248510976
+Knot_Tying_Compilation_Total_Right.csv,M - Economy of Motion,Overall Performance,-0.30703702725158394
+Knot_Tying_Compilation_Total_Left.csv,S - Economy of Motion,Overall Performance,-0.30644782764587747
+Suturing_Compilation_Total_Right.csv,S - 80% Volume of Motion,Flow of Operation,0.30643949535560744
+Suturing_Compilation_Total_Left.csv,M - 80% V / V Ratio,GRS,-0.3060329951649846
+Needle_Passing_Compilation_Total_Left.csv,S - 80% V / V Ratio,GRS,-0.304271830938878
+Needle_Passing_Compilation_Total_Left.csv,Time to Completion,GRS,-0.30423043479792944
+Needle_Passing_Compilation_Total_Right.csv,Time to Completion,GRS,-0.30423043479792944
+Needle_Passing_Compilation_Total_Left.csv,S - 80% V / V Ratio,Time and Motion,-0.30346167501186705
+Suturing_Compilation_Total_Right.csv,M - 80% Volume of Motion,Quality of Final Product,-0.2992684580968352
+Needle_Passing_Compilation_Total_Left.csv,Time to Completion,Time and Motion,-0.2979558202051717
+Needle_Passing_Compilation_Total_Right.csv,Time to Completion,Time and Motion,-0.2979558202051717
+Suturing_Compilation_Total_Left.csv,S - 80% Volume of Motion,Quality of Final Product,-0.29606040855588356
+Needle_Passing_Compilation_Total_Right.csv,M - 80% V / V Ratio,GRS,-0.2898648148361459
+Needle_Passing_Compilation_Total_Right.csv,M - 80% V / V Ratio,Time and Motion,-0.2897041721039938
+Suturing_Compilation_Total_Right.csv,S - 80% Volume of Motion,Respect for Tissue,0.2889348586675679
+Suturing_Compilation_Total_Left.csv,M - 80% Volume of Motion,Respect for Tissue,0.2875987632353526
+Suturing_Compilation_Total_Left.csv,M - 80% Volume of Motion,Time and Motion,0.28440201632590373
+Suturing_Compilation_Total_Right.csv,S - 80% Volume of Motion,Time and Motion,0.2812086185443056
+Suturing_Compilation_Total_Right.csv,M - Economy of Motion,Respect for Tissue,-0.2800535304075342
+Suturing_Compilation_Total_Left.csv,S - Economy of Motion,Respect for Tissue,-0.27862295130597314
+Knot_Tying_Compilation_Total_Right.csv,M - Economy of Motion,Time and Motion,-0.2782927434823729
+Knot_Tying_Compilation_Total_Left.csv,S - Economy of Motion,Time and Motion,-0.2773079277697499
+Knot_Tying_Compilation_Total_Left.csv,S - Economy of Motion,Quality of Final Product,-0.26793347013776964
+Knot_Tying_Compilation_Total_Right.csv,M - Economy of Motion,Quality of Final Product,-0.2677809761894119
+Suturing_Compilation_Total_Left.csv,S - 80% Volume of Motion,Respect for Tissue,-0.26058284684443844
+Suturing_Compilation_Total_Right.csv,M - 80% Volume of Motion,Respect for Tissue,-0.256829838920926
+Needle_Passing_Compilation_Total_Right.csv,S - Economy of Motion,Respect for Tissue,-0.2514666991374186
+Needle_Passing_Compilation_Total_Left.csv,M - Economy of Motion,Respect for Tissue,-0.24995519604412386
+Needle_Passing_Compilation_Total_Left.csv,S - Volume of Motion,Flow of Operation,0.2496434776852585
+Needle_Passing_Compilation_Total_Right.csv,M - Volume of Motion,Flow of Operation,0.24603839279476572
+Suturing_Compilation_Total_Right.csv,M - Economy of Motion,Quality of Final Product,-0.24056593399640191
+Needle_Passing_Compilation_Total_Left.csv,S - 80% V / V Ratio,Respect for Tissue,-0.2394784963005684
+Suturing_Compilation_Total_Left.csv,S - Economy of Motion,Quality of Final Product,-0.23868396610131018
+Suturing_Compilation_Total_Right.csv,S - 80% V / V Ratio,Time and Motion,-0.2357183350366019
+Needle_Passing_Compilation_Total_Right.csv,M - 80% V / V Ratio,Respect for Tissue,-0.2310778204641335
+Suturing_Compilation_Total_Left.csv,M - 80% V / V Ratio,Time and Motion,-0.2301147968329054
+Needle_Passing_Compilation_Total_Right.csv,S - 80% Volume of Motion,Suture/Needle Handling,0.22632815956799401
+Suturing_Compilation_Total_Right.csv,M - Volume of Motion,Overall Performance,-0.22399212889674813
+Needle_Passing_Compilation_Total_Right.csv,M - 80% Volume of Motion,Respect for Tissue,-0.21718139691837038
+Needle_Passing_Compilation_Total_Left.csv,M - 80% Volume of Motion,Suture/Needle Handling,0.2169619338578523
+Needle_Passing_Compilation_Total_Left.csv,S - 80% Volume of Motion,Respect for Tissue,-0.21560210258270046
+Needle_Passing_Compilation_Total_Right.csv,S - Economy of Motion,Quality of Final Product,-0.21545071293987833
+Needle_Passing_Compilation_Total_Right.csv,S - Economy of Motion,GRS,-0.21506565955072188
+Needle_Passing_Compilation_Total_Left.csv,Time to Completion,Respect for Tissue,-0.21420739599182181
+Needle_Passing_Compilation_Total_Right.csv,Time to Completion,Respect for Tissue,-0.21420739599182181
+Needle_Passing_Compilation_Total_Left.csv,M - Economy of Motion,Quality of Final Product,-0.213384446989705
+Needle_Passing_Compilation_Total_Right.csv,S - Economy of Motion,Overall Performance,-0.21271461073391357
+Needle_Passing_Compilation_Total_Left.csv,M - Economy of Motion,GRS,-0.21247730411716015
+Suturing_Compilation_Total_Right.csv,S - 80% V / V Ratio,Suture/Needle Handling,-0.2113347434517142
+Suturing_Compilation_Total_Left.csv,M - 80% V / V Ratio,Suture/Needle Handling,-0.21111378815711093
+Suturing_Compilation_Total_Left.csv,S - 80% Volume of Motion,Time and Motion,-0.21110806521855488
+Needle_Passing_Compilation_Total_Left.csv,M - Economy of Motion,Overall Performance,-0.21104673965780743
+Suturing_Compilation_Total_Right.csv,M - 80% Volume of Motion,Time and Motion,-0.2109975753228457
+Needle_Passing_Compilation_Total_Left.csv,M - Volume of Motion,Quality of Final Product,-0.20764371639936083
+Suturing_Compilation_Total_Right.csv,S - Economy of Motion,Respect for Tissue,0.2075664916478378
+Suturing_Compilation_Total_Left.csv,M - Economy of Motion,Respect for Tissue,0.2066774889192146
+Suturing_Compilation_Total_Left.csv,S - 80% Volume of Motion,Flow of Operation,-0.205629072720668
+Suturing_Compilation_Total_Right.csv,M - 80% Volume of Motion,Flow of Operation,-0.20425599397336344
+Suturing_Compilation_Total_Right.csv,M - 80% Volume of Motion,GRS,-0.20403139904626036
+Suturing_Compilation_Total_Left.csv,S - 80% Volume of Motion,GRS,-0.2038117395967554
+Suturing_Compilation_Total_Left.csv,S - Volume of Motion,Overall Performance,-0.2018376312732251
+Needle_Passing_Compilation_Total_Right.csv,S - Volume of Motion,Quality of Final Product,-0.20052007334496674
+Suturing_Compilation_Total_Right.csv,M - 80% Volume of Motion,Overall Performance,-0.19515163936214622
+Suturing_Compilation_Total_Right.csv,S - 80% V / V Ratio,Flow of Operation,-0.19476085074888044
+Suturing_Compilation_Total_Left.csv,S - 80% Volume of Motion,Overall Performance,-0.19447913527782607
+Suturing_Compilation_Total_Left.csv,M - 80% V / V Ratio,Flow of Operation,-0.18742353033578968
+Needle_Passing_Compilation_Total_Left.csv,S - Volume of Motion,Overall Performance,0.18466269783473538
+Needle_Passing_Compilation_Total_Left.csv,S - Volume of Motion,Suture/Needle Handling,0.18174650613366738
+Needle_Passing_Compilation_Total_Right.csv,M - Volume of Motion,Suture/Needle Handling,0.18113363904690177
+Needle_Passing_Compilation_Total_Right.csv,M - Volume of Motion,Overall Performance,0.181116524374416
+Suturing_Compilation_Total_Right.csv,M - Economy of Motion,Suture/Needle Handling,-0.17974859307788513
+Suturing_Compilation_Total_Left.csv,S - Economy of Motion,Suture/Needle Handling,-0.17820787595240872
+Suturing_Compilation_Total_Right.csv,S - Economy of Motion,Quality of Final Product,0.1779371610423684
+Needle_Passing_Compilation_Total_Left.csv,S - 80% Volume of Motion,Time and Motion,-0.1776754393834293
+Needle_Passing_Compilation_Total_Right.csv,S - Economy of Motion,Suture/Needle Handling,-0.17704634786971735
+Suturing_Compilation_Total_Left.csv,M - Economy of Motion,Quality of Final Product,0.17702110650127506
+Needle_Passing_Compilation_Total_Right.csv,M - 80% Volume of Motion,Time and Motion,-0.17639388919661747
+Needle_Passing_Compilation_Total_Right.csv,S - Volume of Motion,Suture/Needle Handling,0.17551883270558724
+Needle_Passing_Compilation_Total_Left.csv,S - 80% Volume of Motion,Flow of Operation,-0.17483558294828
+Needle_Passing_Compilation_Total_Left.csv,M - Economy of Motion,Suture/Needle Handling,-0.17366614984285156
+Needle_Passing_Compilation_Total_Left.csv,S - 80% Volume of Motion,GRS,-0.17199599278827155
+Needle_Passing_Compilation_Total_Left.csv,S - 80% Volume of Motion,Overall Performance,-0.16990886046392648
+Needle_Passing_Compilation_Total_Right.csv,M - 80% Volume of Motion,Flow of Operation,-0.16986072356912005
+Needle_Passing_Compilation_Total_Right.csv,M - 80% Volume of Motion,GRS,-0.16893353658591045
+Suturing_Compilation_Total_Right.csv,S - Economy of Motion,Suture/Needle Handling,0.16795633654408287
+Suturing_Compilation_Total_Left.csv,M - Economy of Motion,Suture/Needle Handling,0.16719044317286266
+Suturing_Compilation_Total_Right.csv,S - 80% Volume of Motion,Quality of Final Product,0.16644010751418162
+Needle_Passing_Compilation_Total_Right.csv,M - 80% Volume of Motion,Overall Performance,-0.1659237208665064
+Suturing_Compilation_Total_Left.csv,M - 80% Volume of Motion,Quality of Final Product,0.16483314111947953
+Needle_Passing_Compilation_Total_Left.csv,S - Volume of Motion,Quality of Final Product,0.16454143835434384
+Needle_Passing_Compilation_Total_Left.csv,S - Volume of Motion,GRS,0.16119020737061585
+Suturing_Compilation_Total_Right.csv,M - Volume of Motion,Respect for Tissue,-0.15996763955891272
+Needle_Passing_Compilation_Total_Left.csv,M - Volume of Motion,Suture/Needle Handling,0.15862994938326247
+Needle_Passing_Compilation_Total_Right.csv,M - Volume of Motion,GRS,0.1545588143476233
+Suturing_Compilation_Total_Left.csv,Time to Completion,Quality of Final Product,-0.15359560721201082
+Suturing_Compilation_Total_Right.csv,Time to Completion,Quality of Final Product,-0.15359560721201082
+Suturing_Compilation_Total_Right.csv,M - Volume of Motion,Time and Motion,-0.15225531358543937
+Needle_Passing_Compilation_Total_Right.csv,M - Volume of Motion,Quality of Final Product,0.14995632797445974
+Suturing_Compilation_Total_Left.csv,S - Volume of Motion,Respect for Tissue,-0.14976129878774005
+Suturing_Compilation_Total_Left.csv,S - 80% V / V Ratio,Flow of Operation,-0.14361617822926692
+Knot_Tying_Compilation_Total_Right.csv,S - Volume of Motion,Suture/Needle Handling,0.1428093917907612
+Knot_Tying_Compilation_Total_Left.csv,M - Volume of Motion,Suture/Needle Handling,0.14081013143060023
+Needle_Passing_Compilation_Total_Right.csv,S - Economy of Motion,Time and Motion,-0.13838913202838293
+Needle_Passing_Compilation_Total_Left.csv,M - Economy of Motion,Time and Motion,-0.13592329120287777
+Knot_Tying_Compilation_Total_Right.csv,M - 80% V / V Ratio,Flow of Operation,0.1331639443271484
+Knot_Tying_Compilation_Total_Left.csv,S - 80% V / V Ratio,Flow of Operation,0.13183729519612525
+Suturing_Compilation_Total_Right.csv,M - Volume of Motion,GRS,-0.13110064376419234
+Suturing_Compilation_Total_Left.csv,S - Volume of Motion,Time and Motion,-0.1291085119605973
+Knot_Tying_Compilation_Total_Right.csv,M - 80% V / V Ratio,Quality of Final Product,0.128905279292017
+Suturing_Compilation_Total_Right.csv,M - Volume of Motion,Quality of Final Product,-0.12391348241852407
+Suturing_Compilation_Total_Left.csv,S - 80% V / V Ratio,Suture/Needle Handling,-0.11542058940917767
+Suturing_Compilation_Total_Left.csv,S - Volume of Motion,Quality of Final Product,-0.11416430222140098
+Suturing_Compilation_Total_Left.csv,M - Economy of Motion,Time and Motion,-0.11403815847509488
+Suturing_Compilation_Total_Right.csv,S - Economy of Motion,Time and Motion,-0.11332238098924957
+Needle_Passing_Compilation_Total_Left.csv,S - 80% Volume of Motion,Suture/Needle Handling,-0.11302207932635801
+Suturing_Compilation_Total_Left.csv,S - Volume of Motion,GRS,-0.11217758529747442
+Needle_Passing_Compilation_Total_Right.csv,M - 80% Volume of Motion,Suture/Needle Handling,-0.1119566385978305
+Suturing_Compilation_Total_Right.csv,M - 80% V / V Ratio,Flow of Operation,-0.11146473878809562
+Needle_Passing_Compilation_Total_Right.csv,S - Economy of Motion,Flow of Operation,-0.10996517521721011
+Needle_Passing_Compilation_Total_Right.csv,S - 80% Volume of Motion,Flow of Operation,0.10928552908584294
+Knot_Tying_Compilation_Total_Left.csv,S - 80% V / V Ratio,Quality of Final Product,0.1075537883117149
+Needle_Passing_Compilation_Total_Left.csv,M - Economy of Motion,Flow of Operation,-0.10735338402654879
+Knot_Tying_Compilation_Total_Right.csv,M - Economy of Motion,Respect for Tissue,-0.10731445363570544
+Suturing_Compilation_Total_Right.csv,M - 80% V / V Ratio,Suture/Needle Handling,-0.10680087314045025
+Knot_Tying_Compilation_Total_Left.csv,S - Economy of Motion,Respect for Tissue,-0.10592476017595633
+Needle_Passing_Compilation_Total_Right.csv,S - Volume of Motion,Time and Motion,0.10524294559874925
+Suturing_Compilation_Total_Left.csv,S - 80% V / V Ratio,Quality of Final Product,-0.1036607348974873
+Needle_Passing_Compilation_Total_Left.csv,M - 80% Volume of Motion,Flow of Operation,0.10084963207705834
+Needle_Passing_Compilation_Total_Left.csv,M - 80% V / V Ratio,Quality of Final Product,0.0966829251205803
+Suturing_Compilation_Total_Right.csv,S - Economy of Motion,GRS,0.0933558820048841
+Suturing_Compilation_Total_Left.csv,M - Economy of Motion,GRS,0.09245216552196914
+Needle_Passing_Compilation_Total_Left.csv,M - Volume of Motion,Time and Motion,0.09034808098338404
+Needle_Passing_Compilation_Total_Right.csv,S - 80% V / V Ratio,Quality of Final Product,0.0889341360969107
+Needle_Passing_Compilation_Total_Left.csv,S - Volume of Motion,Time and Motion,0.08858573643240564
+Needle_Passing_Compilation_Total_Right.csv,S - 80% Volume of Motion,Time and Motion,0.0860102662764121
+Needle_Passing_Compilation_Total_Left.csv,M - 80% Volume of Motion,Respect for Tissue,-0.08396841845374553
+Needle_Passing_Compilation_Total_Right.csv,M - Volume of Motion,Time and Motion,0.08354491734968757
+Needle_Passing_Compilation_Total_Right.csv,S - 80% Volume of Motion,Respect for Tissue,-0.0815058180328809
+Suturing_Compilation_Total_Right.csv,M - 80% V / V Ratio,Quality of Final Product,-0.08069464333241841
+Needle_Passing_Compilation_Total_Left.csv,M - 80% Volume of Motion,Time and Motion,0.07864439880184627
+Suturing_Compilation_Total_Left.csv,Time to Completion,Respect for Tissue,-0.07764226358080406
+Suturing_Compilation_Total_Right.csv,Time to Completion,Respect for Tissue,-0.07764226358080406
+Needle_Passing_Compilation_Total_Right.csv,S - Volume of Motion,Flow of Operation,0.074197071195368
+Needle_Passing_Compilation_Total_Left.csv,M - 80% V / V Ratio,Flow of Operation,0.07208298381941436
+Knot_Tying_Compilation_Total_Right.csv,S - Volume of Motion,Flow of Operation,0.07175532755792566
+Needle_Passing_Compilation_Total_Left.csv,M - Volume of Motion,Respect for Tissue,-0.07155700159967515
+Needle_Passing_Compilation_Total_Left.csv,Time to Completion,Quality of Final Product,-0.07094846736798051
+Needle_Passing_Compilation_Total_Right.csv,Time to Completion,Quality of Final Product,-0.07094846736798051
+Needle_Passing_Compilation_Total_Right.csv,S - 80% V / V Ratio,Respect for Tissue,-0.06938733884713606
+Needle_Passing_Compilation_Total_Left.csv,S - 80% Volume of Motion,Quality of Final Product,-0.06895304942875684
+Knot_Tying_Compilation_Total_Left.csv,M - Volume of Motion,Overall Performance,-0.06292641574603015
+Knot_Tying_Compilation_Total_Right.csv,S - Volume of Motion,Respect for Tissue,-0.06204075467673942
+Needle_Passing_Compilation_Total_Right.csv,M - 80% Volume of Motion,Quality of Final Product,-0.061857441186223966
+Needle_Passing_Compilation_Total_Right.csv,S - 80% V / V Ratio,Overall Performance,-0.061100900090287014
+Knot_Tying_Compilation_Total_Left.csv,M - Volume of Motion,Flow of Operation,0.06054848009168627
+Suturing_Compilation_Total_Left.csv,S - 80% V / V Ratio,GRS,-0.06033884950379822
+Knot_Tying_Compilation_Total_Left.csv,M - Volume of Motion,Time and Motion,-0.05859220225060796
+Knot_Tying_Compilation_Total_Right.csv,M - 80% V / V Ratio,Respect for Tissue,-0.05727776116204536
+Knot_Tying_Compilation_Total_Right.csv,S - Volume of Motion,Overall Performance,-0.05715522278792823
+Needle_Passing_Compilation_Total_Right.csv,S - 80% Volume of Motion,Quality of Final Product,-0.05653879283656195
+Knot_Tying_Compilation_Total_Left.csv,M - Volume of Motion,Respect for Tissue,-0.05564333634384837
+Needle_Passing_Compilation_Total_Left.csv,M - Volume of Motion,Flow of Operation,0.0541415095478905
+Needle_Passing_Compilation_Total_Right.csv,S - Volume of Motion,Respect for Tissue,-0.053553960341014485
+Knot_Tying_Compilation_Total_Left.csv,M - Volume of Motion,Quality of Final Product,0.04918748872128767
+Knot_Tying_Compilation_Total_Left.csv,S - 80% V / V Ratio,Respect for Tissue,-0.046690454941205745
+Needle_Passing_Compilation_Total_Left.csv,M - 80% Volume of Motion,Quality of Final Product,-0.046257873890897555
+Needle_Passing_Compilation_Total_Right.csv,S - 80% Volume of Motion,GRS,0.04541635599039183
+Needle_Passing_Compilation_Total_Left.csv,M - 80% Volume of Motion,GRS,0.04351019135550051
+Suturing_Compilation_Total_Right.csv,S - Economy of Motion,Flow of Operation,0.04282506055684371
+Suturing_Compilation_Total_Right.csv,M - 80% V / V Ratio,Respect for Tissue,0.04210026380731123
+Suturing_Compilation_Total_Left.csv,M - Economy of Motion,Flow of Operation,0.042023662369367
+Needle_Passing_Compilation_Total_Left.csv,M - 80% V / V Ratio,Respect for Tissue,-0.039960358126476955
+Knot_Tying_Compilation_Total_Right.csv,S - Volume of Motion,Quality of Final Product,0.039750939481464145
+Suturing_Compilation_Total_Right.csv,S - Economy of Motion,Overall Performance,0.037976638650471344
+Suturing_Compilation_Total_Right.csv,M - 80% V / V Ratio,GRS,-0.037737453568084285
+Suturing_Compilation_Total_Left.csv,M - Economy of Motion,Overall Performance,0.037132643167300354
+Suturing_Compilation_Total_Right.csv,M - 80% V / V Ratio,Overall Performance,0.03553116989836439
+Needle_Passing_Compilation_Total_Right.csv,S - 80% V / V Ratio,Flow of Operation,0.03541688234292825
+Knot_Tying_Compilation_Total_Right.csv,S - Volume of Motion,Time and Motion,-0.0341381957600144
+Suturing_Compilation_Total_Left.csv,S - 80% V / V Ratio,Respect for Tissue,0.03369757958575076
+Knot_Tying_Compilation_Total_Left.csv,S - 80% V / V Ratio,Suture/Needle Handling,-0.03310961389299641
+Knot_Tying_Compilation_Total_Right.csv,M - 80% V / V Ratio,GRS,0.032065272828539555
+Needle_Passing_Compilation_Total_Left.csv,M - 80% V / V Ratio,Suture/Needle Handling,0.03074331700548694
+Knot_Tying_Compilation_Total_Right.csv,M - 80% V / V Ratio,Suture/Needle Handling,-0.02939617732896766
+Suturing_Compilation_Total_Right.csv,M - Volume of Motion,Flow of Operation,-0.02911880855390779
+Suturing_Compilation_Total_Right.csv,M - Volume of Motion,Suture/Needle Handling,-0.027036889918261607
+Knot_Tying_Compilation_Total_Left.csv,S - 80% V / V Ratio,GRS,0.02683486910340571
+Needle_Passing_Compilation_Total_Left.csv,M - 80% V / V Ratio,GRS,0.02517258227294023
+Suturing_Compilation_Total_Left.csv,S - 80% Volume of Motion,Suture/Needle Handling,0.02476470647754696
+Needle_Passing_Compilation_Total_Left.csv,M - 80% V / V Ratio,Overall Performance,-0.024283328610402045
+Suturing_Compilation_Total_Right.csv,M - 80% Volume of Motion,Suture/Needle Handling,0.022550594579573292
+Needle_Passing_Compilation_Total_Right.csv,S - 80% Volume of Motion,Overall Performance,-0.022180768741489693
+Needle_Passing_Compilation_Total_Right.csv,S - 80% V / V Ratio,Time and Motion,-0.019542557259413035
+Knot_Tying_Compilation_Total_Right.csv,S - Volume of Motion,GRS,0.017305293432459255
+Needle_Passing_Compilation_Total_Left.csv,M - 80% Volume of Motion,Overall Performance,-0.01707805387660804
+Suturing_Compilation_Total_Right.csv,M - 80% V / V Ratio,Time and Motion,0.01628864680379468
+Needle_Passing_Compilation_Total_Left.csv,S - Volume of Motion,Respect for Tissue,0.01582771015570844
+Needle_Passing_Compilation_Total_Right.csv,S - Volume of Motion,GRS,0.014161839565549707
+Suturing_Compilation_Total_Left.csv,S - 80% V / V Ratio,Time and Motion,-0.012733826431299949
+Suturing_Compilation_Total_Left.csv,S - 80% V / V Ratio,Overall Performance,0.012718466579563648
+Needle_Passing_Compilation_Total_Right.csv,M - 80% V / V Ratio,Quality of Final Product,0.01269057552356772
+Knot_Tying_Compilation_Total_Left.csv,M - Volume of Motion,GRS,0.012670072469393197
+Needle_Passing_Compilation_Total_Left.csv,M - Volume of Motion,Overall Performance,-0.012332379681535487
+Knot_Tying_Compilation_Total_Left.csv,S - 80% V / V Ratio,Time and Motion,-0.011276197409282485
+Suturing_Compilation_Total_Left.csv,S - Volume of Motion,Suture/Needle Handling,-0.010773809184687547
+Needle_Passing_Compilation_Total_Right.csv,M - Volume of Motion,Respect for Tissue,0.009524978682872127
+Suturing_Compilation_Total_Left.csv,S - Volume of Motion,Flow of Operation,-0.008791147418816373
+Knot_Tying_Compilation_Total_Right.csv,M - 80% V / V Ratio,Overall Performance,0.007739631873153553
+Needle_Passing_Compilation_Total_Right.csv,S - Volume of Motion,Overall Performance,0.005775684421491895
+Needle_Passing_Compilation_Total_Left.csv,M - 80% V / V Ratio,Time and Motion,0.005750848983700471
+Needle_Passing_Compilation_Total_Right.csv,S - 80% V / V Ratio,GRS,-0.005351692819810336
+Knot_Tying_Compilation_Total_Right.csv,M - 80% V / V Ratio,Time and Motion,-0.005276346565393761
+Needle_Passing_Compilation_Total_Left.csv,S - 80% V / V Ratio,Quality of Final Product,-0.005269968103904531
+Needle_Passing_Compilation_Total_Left.csv,M - Volume of Motion,GRS,-0.0035207030555497315
+Needle_Passing_Compilation_Total_Right.csv,S - 80% V / V Ratio,Suture/Needle Handling,0.0012151386146414117
+Knot_Tying_Compilation_Total_Left.csv,S - 80% V / V Ratio,Overall Performance,0.00019976406851332507

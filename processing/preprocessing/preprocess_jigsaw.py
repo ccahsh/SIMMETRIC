@@ -211,16 +211,17 @@ if __name__ == '__main__':
                 emptyError.append(emptyfilepath)
             
             # modify as suited
-            highlights = [
-                'SLTx', 'SLTy', 'SLTz',
-                'SLTTVx', 'SLTTVy', 'SLTTVz',
-                'SLTRVx', 'SLTRVy', 'SLTRVz',
-                'SLGA',
-                'SRTx', 'SRTy', 'SRTz',
-                'SRTTVx', 'SRTTVy', 'SRTTVz',
-                'SRTRVx', 'SRTRVy', 'SRTRVz',
-                'SRGA'
-            ]
+            highlights = kinematicscolumns
+            # highlights = [
+            #     'SLTx', 'SLTy', 'SLTz',
+            #     'SLTTVx', 'SLTTVy', 'SLTTVz',
+            #     'SLTRVx', 'SLTRVy', 'SLTRVz',
+            #     'SLGA',
+            #     'SRTx', 'SRTy', 'SRTz',
+            #     'SRTTVx', 'SRTTVy', 'SRTTVz',
+            #     'SRTRVx', 'SRTRVy', 'SRTRVz',
+            #     'SRGA'
+            # ]
 
             highlightsdf = kinematicsdf[highlights]
             highlightindividualsdf = highlightsdf.copy() # separate
