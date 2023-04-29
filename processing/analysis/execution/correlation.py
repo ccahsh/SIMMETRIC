@@ -1,4 +1,5 @@
 import os, sys
+import re
 from numpy import greater, pad
 import pandas as pd
 from mpl_toolkits.mplot3d import Axes3D
@@ -14,14 +15,21 @@ def get_simmetric_path(path):
     """
     Returns the path of the directory that ends with "SIMMETRIC"
     """
-    while True:
-        dir_path, dir_name = os.path.split(path)
-        if dir_name == "SIMMETRIC":
-            return path
-        elif dir_name == "":
-            return None
-        else:
-            path = dir_path
+
+    match = re.search(r"SIMMETRIC", path)
+
+    if match:
+        return match.string[0:match.end()]
+    else:
+        raise Exception("SIMMETRIC folder cannot be found from the file path. Please fix and try again.")
+    # while True:
+    #     dir_path, dir_name = os.path.split(path)
+    #     if dir_name == "SIMMETRIC":
+    #         return path
+    #     elif dir_name == "":
+    #         return None
+    #     else:
+    #         path = dir_path
 
 
 if __name__ == "__main__":
@@ -37,46 +45,27 @@ if __name__ == "__main__":
 
     os.chdir(gesture_path)
 
-    fig, ((ax1, ax2)) = plt.subplots(ncols=2)
-
-    files = next(os.walk(gesture_path))[1]
-
     for i, filename in enumerate(next(os.walk("."))[2]):
-        if i == 1:
-            continue
+        hand = "Left" if i==0 else "Right"
 
         df = pd.read_csv(filename)
 
-        
+        for y_name in df.loc[:, "Volume of Motion" : "Economy of Motion"]:
+            y = df.loc[:, y_name]
 
-        # for x_name in df.loc[:, "Volume of Motion" : "Economy of Motion"]:
-        #     x_var = df.loc[:, x_name]
-            
-        #     for y_name in df.loc[:, "GRS" : "Quality of Final Product"]:
-        #         x_var = df.loc[:, x_name]
+            for x_name in df.loc[:, "GRS" : "Quality of Final Product"]:
+                x = df.loc[:, x_name]
+                m, b, r_value, p_value, std_err = scipy.stats.linregress(x, y)
 
-        y = df.loc[:, "Economy of Motion"]
-        x = df.loc[:, "GRS"]
+                plt.figure()
+                plt.title("{} vs. {} ({})".format(y_name, x_name, hand))
+                plt.xlabel(x_name)
+                plt.ylabel(y_name)
 
-        print(x.values)
-        print(y.values)
+                plt.scatter(x.values,y.values)
+                plt.plot(x, m*x+b)
 
-
-        plt.scatter(x.values,y.values)
-
-        m, b, r_value, p_value, std_err = scipy.stats.linregress(x, y)
-        plt.plot(x, m*x+b)
-        print(r_value**2)
-
-
-
-
-
-
-    # fig.tight_layout(pad=5)
-
-    # fig.subtitle('Gesture Breakdown: User ' + user + ", Trial " + trial, fontweight="bold")
-
-    # fig.legend(gestures)
+                print("{} vs. {} ({})".format(y_name, x_name, hand))
+                print(r_value**2)
 
     plt.show()
