@@ -12,3 +12,5 @@ Robotic Surgery Feedback System.  Part of BME Design Team course at Johns Hopkin
 ## Contributors
 
 Design Team 4 Crews
+
+Copyright © 2022-2023 SIMMETRIC. All rights reserved.
