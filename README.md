@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Robotic Surgery Feedback System.  Part of BME Design Team course at Johns Hopkins University.  
+Official repository for SIMMETRIC, a robotic surgery feedback system for next-generation resident training. SIMMETRIC is a spin-off from the BME Design Team curriculum at Johns Hopkins University.
 
 ## Instructions
 
